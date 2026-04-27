@@ -1,0 +1,122 @@
+baseURL: /
+languageCode: en-us
+title: The Human Engineer
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+pagination:
+  pagerSize: 10
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production
+  description: "Where Engineering Meets The Individual — notes on software, systems, and the craft, by Ágoston Fung."
+  author: Ágoston Fung
+  keywords: ["software engineering", "consulting", "Equal Experts", "Budapest", "blog", "portfolio"]
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+  TocOpen: false
+  comments: false
+
+  profileMode:
+    enabled: true
+    title: "The Human Engineer"
+    subtitle: "*Where Engineering Meets The Individual.*<br><br>Engineer in Budapest, 20+ years across startups and enterprises. Currently consulting through [Equal Experts](https://www.equalexperts.com/)."
+    imageUrl: "images/profile.jpg"
+    imageTitle: "Ágoston Fung"
+    imageWidth: 220
+    imageHeight: 220
+    buttons:
+      - name: Posts
+        url: posts
+      - name: About
+        url: about
+      - name: Archive
+        url: archives
+
+  homeInfoParams:
+    Title: "The Human Engineer"
+    Content: >
+      *Where Engineering Meets The Individual.*
+
+
+      I'm Ágoston — an engineer based in Budapest with 20+ years in software,
+      currently consulting at [Equal Experts](https://www.equalexperts.com/).
+      Past stints at EY, bp, and Tesco, plus a few startups along the way.
+
+
+      I write here about software, systems, and the craft of engineering.
+      Browse the [posts](/posts) or learn more [about me](/about).
+
+  socialIcons:
+    - name: linkedin
+      url: "https://www.linkedin.com/in/agostonfung/"
+    - name: github
+      url: "https://github.com/eshton"
+    - name: email
+      url: "mailto:agoston.fung@gmail.com"
+    - name: rss
+      url: "/index.xml"
+
+  assets:
+    disableHLJS: true
+    favicon: "/favicon.ico"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 10
+    - identifier: archives
+      name: Archive
+      url: /archives/
+      weight: 20
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 30
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 40
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    style: monokai
