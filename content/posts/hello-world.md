@@ -1,6 +1,6 @@
 ---
 title: "Echo 'Hello, world!'"
-date: '2026-04-27T13:29:04+02:00'
+date: 2025-09-01
 draft: false
 tags: ["meta"]
 categories: ["misc"]
