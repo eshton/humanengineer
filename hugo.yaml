@@ -11,6 +11,10 @@ buildExpired: false
 pagination:
   pagerSize: 10
 
+imaging:
+  resampleFilter: Lanczos
+  quality: 90
+
 minify:
   disableXML: true
   minifyOutput: true
