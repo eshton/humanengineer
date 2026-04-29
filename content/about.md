@@ -8,7 +8,7 @@ ShowReadingTime: false
 ShowWordCount: false
 ---
 
-I'm **Ágoston Fung**, a software engineer based in Budapest, Hungary, with
+I'm **Agoston Fung**, a software engineer based in Budapest, Hungary, with
 20+ years in the industry. My career has spanned startups and large
 enterprises — including EY, bp, and Tesco — and I currently consult through
 [Equal Experts](https://www.equalexperts.com/).

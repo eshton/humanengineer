@@ -27,8 +27,8 @@ outputs:
 
 params:
   env: production
-  description: "Where Engineering Meets The Individual — notes on software, systems, and the craft, by Ágoston Fung."
-  author: Ágoston Fung
+  description: "Where Engineering Meets The Individual — notes on software, systems, and the craft, by Agoston Fung."
+  author: Agoston Fung
   keywords: ["software engineering", "consulting", "Equal Experts", "Budapest", "blog", "portfolio"]
   defaultTheme: auto
   ShowReadingTime: true
@@ -47,7 +47,7 @@ params:
     title: "The Human Engineer"
     subtitle: "*Where Engineering Meets The Individual.*<br><br>Engineer in Budapest, 20+ years across startups and enterprises. Currently consulting through [Equal Experts](https://www.equalexperts.com/)."
     imageUrl: "images/profile.jpg"
-    imageTitle: "Ágoston Fung"
+    imageTitle: "Agoston Fung"
     imageWidth: 220
     imageHeight: 220
     buttons:
@@ -64,7 +64,7 @@ params:
       *Where Engineering Meets The Individual.*
 
 
-      I'm Ágoston — an engineer based in Budapest with 20+ years in software,
+      I'm Agoston — an engineer based in Budapest with 20+ years in software,
       currently consulting at [Equal Experts](https://www.equalexperts.com/).
       Past stints at EY, bp, and Tesco, plus a few startups along the way.
 
