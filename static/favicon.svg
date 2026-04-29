@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="geometricPrecision">
-  <rect width="64" height="64" rx="14" fill="#1d1e20"/>
+  <rect width="64" height="64" rx="14" fill="#ffffff"/>
 
   <!-- Brain outline: cloud-like rounded shape with bumps for lobes -->
   <path d="M 32 9
@@ -12,23 +12,23 @@
            C 51 47, 55 38, 51 33
            C 57 30, 55 21, 49 19
            C 48 11, 40 7, 32 9 Z"
-        fill="#e8e9ee"/>
+        fill="#f593a4"/>
 
   <!-- Central fissure between the two hemispheres -->
   <path d="M 32 9 Q 30 20 32 30 Q 34 42 32 52"
-        fill="none" stroke="#1d1e20" stroke-width="1.6" stroke-linecap="round"/>
+        fill="none" stroke="#ba5d74" stroke-width="1.6" stroke-linecap="round"/>
 
   <!-- Left hemisphere gyri (folds) -->
-  <path d="M 23 17 Q 19 21 24 24" fill="none" stroke="#1d1e20" stroke-width="1.4" stroke-linecap="round"/>
-  <path d="M 17 27 Q 13 31 19 34" fill="none" stroke="#1d1e20" stroke-width="1.4" stroke-linecap="round"/>
-  <path d="M 21 38 Q 17 43 24 44" fill="none" stroke="#1d1e20" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M 23 17 Q 19 21 24 24" fill="none" stroke="#ba5d74" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M 17 27 Q 13 31 19 34" fill="none" stroke="#ba5d74" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M 21 38 Q 17 43 24 44" fill="none" stroke="#ba5d74" stroke-width="1.4" stroke-linecap="round"/>
 
   <!-- Right hemisphere gyri (mirrored) -->
-  <path d="M 41 17 Q 45 21 40 24" fill="none" stroke="#1d1e20" stroke-width="1.4" stroke-linecap="round"/>
-  <path d="M 47 27 Q 51 31 45 34" fill="none" stroke="#1d1e20" stroke-width="1.4" stroke-linecap="round"/>
-  <path d="M 43 38 Q 47 43 40 44" fill="none" stroke="#1d1e20" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M 41 17 Q 45 21 40 24" fill="none" stroke="#ba5d74" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M 47 27 Q 51 31 45 34" fill="none" stroke="#ba5d74" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M 43 38 Q 47 43 40 44" fill="none" stroke="#ba5d74" stroke-width="1.4" stroke-linecap="round"/>
 
   <!-- Brainstem -->
   <path d="M 29 50 L 29 56 Q 29 58 31 58 L 33 58 Q 35 58 35 56 L 35 50 Z"
-        fill="#e8e9ee"/>
+        fill="#f593a4"/>
 </svg>
