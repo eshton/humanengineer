@@ -1,0 +1,82 @@
+/* Recent posts list on the homepage, below the PaperMod profile hero. */
+
+.profile-posts {
+    max-width: var(--main-width);
+    margin: 0 auto calc(var(--gap) * 2);
+    padding: 0 var(--gap);
+    width: 100%;
+}
+
+.profile-posts h2 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--secondary);
+    text-align: center;
+    margin: 0 0 1rem;
+}
+
+.profile-posts ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-posts li {
+    border-top: 1px solid var(--border);
+}
+
+.profile-posts li:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-posts li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.7rem 0.4rem;
+    color: var(--primary);
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.profile-posts li a:hover {
+    background: var(--code-bg);
+}
+
+.profile-posts li a .title {
+    flex: 1 1 auto;
+    font-weight: 500;
+}
+
+.profile-posts li a time {
+    flex: 0 0 auto;
+    color: var(--secondary);
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
+.profile-posts .all-posts {
+    text-align: center;
+    margin: 1.2rem 0 0;
+}
+
+.profile-posts .all-posts a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-posts .all-posts a:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 600px) {
+    .profile-posts li a {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+}

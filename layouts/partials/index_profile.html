@@ -61,3 +61,22 @@
     </div>
     {{- end}}
 </div>
+
+{{- /* Recent posts list, shown on the homepage below the profile hero. */ -}}
+{{- $recent := first 5 (where site.RegularPages "Section" "posts") }}
+{{- if $recent }}
+<section class="profile-posts">
+    <h2>Recent posts</h2>
+    <ul>
+        {{- range $recent }}
+        <li>
+            <a href="{{ .RelPermalink }}">
+                <span class="title">{{ .Title }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </a>
+        </li>
+        {{- end }}
+    </ul>
+    <p class="all-posts"><a href="{{ "/posts/" | relURL }}">All posts &rarr;</a></p>
+</section>
+{{- end }}
