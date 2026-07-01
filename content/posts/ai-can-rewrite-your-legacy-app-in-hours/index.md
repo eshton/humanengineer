@@ -5,6 +5,12 @@ draft: false
 tags: ["ai", "engineering", "industry"]
 categories: ["industry"]
 summary: "Big-bang rewrites used to be a bad idea for good reasons. AI agents just changed the math."
+cover:
+  image: "cover.jpeg"
+  alt: "A crumbling wall labelled legacy code, outdated stack, and slow delivery on one side, with a small robot carrying a code icon flying through into a bright modern laptop dashboard on the other side."
+  caption: "Old stack, meet new agent."
+  relative: true
+  hidden: false
 ---
 
 The application needs to be rewritten. Better tech, better architecture, better code. Management says no. 🙅

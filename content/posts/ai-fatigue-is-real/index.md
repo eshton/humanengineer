@@ -5,6 +5,12 @@ draft: false
 tags: ["ai", "personal", "engineering"]
 categories: ["personal"]
 summary: "Running agents instead of writing code felt like 10x productivity. Then I broke, and needed 4-6 weeks to recover."
+cover:
+  image: "cover.jpeg"
+  alt: "A person sitting at a desk with multiple code-filled monitors, head in hands, looking toward a bright forest path glowing through a window."
+  caption: "The screens don't stop. Eventually you have to."
+  relative: true
+  hidden: false
 ---
 
 In my previous startup, I jumped on the AI coding train and fully immersed myself in running agents instead of writing code. 🤖 At first it felt incredible. I was 10x more productive, doing in a fraction of the time all the things I'd wanted to do. Hard changes became easy, and I was producing more code in days than I used to produce in months. 🚀

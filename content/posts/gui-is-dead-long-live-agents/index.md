@@ -5,6 +5,12 @@ draft: false
 tags: ["ai", "engineering", "industry"]
 categories: ["industry"]
 summary: "Command line, thick clients, the web, and now agents. The interface itself is starting to look optional."
+cover:
+  image: "cover.jpeg"
+  alt: "Four panels showing an evolution from a terminal window, to a file browser, to a web page, to a glowing AI robot connected to chat, database, analytics, and integration icons."
+  caption: "Terminal → files → web → agent."
+  relative: true
+  hidden: false
 ---
 
 GUI is dead. Long live agents. 🤖

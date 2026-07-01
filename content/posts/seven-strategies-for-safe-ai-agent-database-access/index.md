@@ -5,6 +5,12 @@ draft: false
 tags: ["ai", "engineering", "databases"]
 categories: ["tips"]
 summary: "Unrestricted database access for AI agents is dangerous. Excessive restrictions defeat the purpose. Here's how to find the middle ground."
+cover:
+  image: "cover.jpeg"
+  alt: "Diagram titled 'Safe. Powerful. Direct.' showing an AI agent routed through guardrails (dedicated role, read-only transactions, connection pool, query timeouts) into a read-only schema and read replica, separate from the primary production database."
+  caption: "Seven guardrails, one goal: maximum insight, minimum risk."
+  relative: true
+  hidden: false
 ---
 
 Should your AI agent have direct access to the production database? Unrestricted access is dangerous. Locking it down so hard the agent can't do anything useful defeats the purpose. The answer is architectural guardrails, not a binary yes or no.

@@ -5,6 +5,12 @@ draft: false
 tags: ["ai", "personal", "reflection"]
 categories: ["personal"]
 summary: "AI is supposed to make us more productive. Once you know something, though, there's no going back - and that has a cost of its own."
+cover:
+  image: "cover.jpeg"
+  alt: "A person at a desk holding their head, with a cloud of thoughts above showing security warnings, a glowing brain, a legal scale, a dollar sign, and a document."
+  caption: "Knowledge doesn't come with an undo button."
+  relative: true
+  hidden: false
 ---
 
 AI is supposed to make us more productive. But is it, really? 🤔
