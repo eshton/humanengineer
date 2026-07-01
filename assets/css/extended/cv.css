@@ -1,0 +1,11 @@
+/* PDF embed on the /cv page. */
+
+.cv-embed {
+    display: block;
+    width: 100%;
+    height: 85vh;
+    max-width: 800px;
+    margin: 1.5rem auto 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
