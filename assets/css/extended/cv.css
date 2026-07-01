@@ -6,17 +6,35 @@
 
 .cv-header {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    align-items: baseline;
     gap: 1rem;
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 1rem;
-    margin-bottom: 1.2rem;
 }
 
 .cv-header h1 {
     margin: 0;
+}
+
+.cv-download-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--tertiary);
+    color: var(--primary);
+    transition: opacity 0.15s ease;
+}
+
+.cv-download-icon:hover {
+    opacity: 0.7;
+}
+
+.cv-download-icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 .cv-contact {
@@ -24,15 +42,13 @@
     color: var(--secondary);
     font-size: 0.9rem;
     line-height: 1.6;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 1rem;
+    margin: 0.8rem 0 1.2rem;
 }
 
 .cv-summary {
     color: var(--content);
-}
-
-.cv-download {
-    text-align: center;
-    margin: 1rem 0 2rem;
 }
 
 .cv-body {
@@ -93,10 +109,6 @@
 }
 
 @media (max-width: 700px) {
-    .cv-header {
-        flex-direction: column;
-    }
-
     .cv-contact {
         text-align: left;
     }

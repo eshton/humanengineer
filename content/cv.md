@@ -12,12 +12,16 @@ ShowWordCount: false
 
 <div class="cv-header">
   <h1>Agoston Fung</h1>
-  <div class="cv-contact">
-    Budapest, Hungary<br>
-    +36 20 338 7096<br>
-    <a href="mailto:agoston.fung@gmail.com">agoston.fung@gmail.com</a><br>
-    <a href="https://www.linkedin.com/in/agostonfung">linkedin.com/in/agostonfung</a>
-  </div>
+  <a class="cv-download-icon" href="/files/agoston-fung-cv.pdf" download aria-label="Download CV (PDF)" title="Download CV (PDF)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+  </a>
+</div>
+
+<div class="cv-contact">
+  Budapest, Hungary<br>
+  +36 20 338 7096<br>
+  <a href="mailto:agoston.fung@gmail.com">agoston.fung@gmail.com</a><br>
+  <a href="https://www.linkedin.com/in/agostonfung">linkedin.com/in/agostonfung</a>
 </div>
 
 <p class="cv-summary">
@@ -27,10 +31,6 @@ leading teams, delivering complex projects, and driving both technical and
 organisational growth. Experienced in architecture, cloud, agile delivery,
 and aligning technology with business goals. Equally comfortable as a
 hands-on technologist, strategic leader, or startup advisor.
-</p>
-
-<p class="cv-download">
-  <a class="button" href="/files/agoston-fung-cv.pdf" download>Download CV (PDF)</a>
 </p>
 
 <div class="cv-body">
