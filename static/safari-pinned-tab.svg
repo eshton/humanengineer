@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Filled lightbulb silhouette for Safari pinned tabs. Safari recolors. -->
-  <!-- Bulb body -->
-  <path d="M 22 44
-           C 14 44, 8 36, 8 26
-           C 8 13, 19 4, 32 4
-           C 45 4, 56 13, 56 26
-           C 56 36, 50 44, 42 44
-           L 42 47
-           L 22 47 Z"/>
-  <!-- Threaded base -->
-  <rect x="22" y="47" width="20" height="6"/>
-  <!-- Contact tip -->
-  <path d="M 26 53 L 26 56 Q 26 60 32 60 Q 38 60 38 56 L 38 53 Z"/>
+  <!-- Filled robot-head silhouette for Safari pinned tabs. Safari recolors. -->
+  <!-- Antenna -->
+  <rect x="30" y="8" width="4" height="9" rx="2"/>
+  <circle cx="32" cy="6" r="3.5"/>
+  <!-- Ears -->
+  <rect x="7" y="25" width="7" height="14" rx="3"/>
+  <rect x="50" y="25" width="7" height="14" rx="3"/>
+  <!-- Head -->
+  <rect x="14" y="16" width="36" height="34" rx="10"/>
 </svg>
