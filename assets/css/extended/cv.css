@@ -1,11 +1,114 @@
-/* PDF embed on the /cv page. */
+/* HTML CV layout on the /cv page. */
 
-.cv-embed {
+.cv {
+    max-width: 100%;
+}
+
+.cv-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.cv-header h1 {
+    margin: 0;
+}
+
+.cv-contact {
+    text-align: right;
+    color: var(--secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.cv-summary {
+    color: var(--content);
+}
+
+.cv-download {
+    text-align: center;
+    margin: 1rem 0 2rem;
+}
+
+.cv-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: calc(var(--gap) * 2);
+}
+
+.cv-main h2 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.cv-entry {
+    margin-bottom: 1.3rem;
+}
+
+.cv-entry h3 {
+    margin-bottom: 0.15rem;
+}
+
+.cv-entry .cv-dates {
     display: block;
-    width: 100%;
-    height: 85vh;
-    max-width: 800px;
-    margin: 1.5rem auto 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+}
+
+.cv-entry p {
+    margin: 0;
+}
+
+.cv-sidebar {
+    border-left: 1px solid var(--border);
+    padding-left: calc(var(--gap) * 1.5);
+}
+
+.cv-tag-group {
+    margin-bottom: 1.5rem;
+}
+
+.cv-tag-group h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.cv-tag-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cv-tag-group li {
+    padding: 0.15rem 0;
+}
+
+@media (max-width: 700px) {
+    .cv-header {
+        flex-direction: column;
+    }
+
+    .cv-contact {
+        text-align: left;
+    }
+
+    .cv-body {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding-left: 0;
+        padding-top: 1.5rem;
+    }
 }
