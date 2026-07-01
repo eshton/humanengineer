@@ -1,10 +1,17 @@
-/* Photo grid on the /photography page. */
+/* Photo grid + CSS-only lightbox on the /photography page. */
 
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--gap);
     margin: 1.5rem 0;
+}
+
+.photo-grid-item {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: zoom-in;
 }
 
 .photo-grid figure {
@@ -23,7 +30,7 @@
     transition: transform 0.3s ease;
 }
 
-.photo-grid figure:hover img {
+.photo-grid-item:hover img {
     transform: scale(1.05);
 }
 
@@ -32,4 +39,52 @@
     font-size: 0.85rem;
     color: var(--secondary);
     text-align: center;
+}
+
+/* Lightbox: :target-driven, no JS. */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    z-index: 999;
+}
+
+.lightbox:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    cursor: default;
+}
+
+.lightbox-close {
+    position: absolute;
+    inset: 0;
+    cursor: zoom-out;
+}
+
+.lightbox-close::after {
+    content: "\00d7";
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: #fff;
+    opacity: 0.8;
 }
