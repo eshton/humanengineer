@@ -113,6 +113,10 @@ menu:
       name: About
       url: /about/
       weight: 40
+    - identifier: photography
+      name: Photography
+      url: /photography/
+      weight: 50
 
 markup:
   goldmark:

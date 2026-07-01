@@ -1,0 +1,35 @@
+/* Photo grid on the /photography page. */
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--gap);
+    margin: 1.5rem 0;
+}
+
+.photo-grid figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--code-bg);
+}
+
+.photo-grid img {
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.photo-grid figure:hover img {
+    transform: scale(1.05);
+}
+
+.photo-grid figcaption {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+    color: var(--secondary);
+    text-align: center;
+}
