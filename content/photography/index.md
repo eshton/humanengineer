@@ -15,100 +15,133 @@ photo to view it full screen.
 
 <div class="photo-grid">
 
-<a href="#lb-seven-sisters" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-seven-sisters">
   <figure>
     <img src="seven-sisters-england.jpg" alt="Chalk cliffs of the Seven Sisters, Seaford, England">
     <figcaption>Seven Sisters, Seaford, England</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-winter-lake" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-winter-lake">
   <figure>
     <img src="winter-lake-hungary.jpg" alt="Frozen lake in winter, Hungary">
     <figcaption>Winter lake, Hungary</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-krk-beach" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-krk-beach">
   <figure>
     <img src="krk-beach-croatia.jpg" alt="Beach at Vrbnik, Krk, Croatia">
     <figcaption>Krk, Croatia</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-balaton" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-balaton">
   <figure>
     <img src="balaton-hungary.jpg" alt="Lake Balaton, Hungary">
     <figcaption>Lake Balaton, Hungary</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-mountains" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-mountains">
   <figure>
     <img src="mountains-china.jpg" alt="Green terraced mountains, China">
     <figcaption>Terraced mountains, China</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-koh-samui" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-koh-samui">
   <figure>
     <img src="koh-samui-thailand.jpg" alt="Beach at Koh Samui, Thailand">
     <figcaption>Koh Samui, Thailand</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-angkor-wat" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-angkor-wat">
   <figure>
     <img src="angkor-wat-cambodia.jpg" alt="Angkor Wat temple, Siem Reap, Cambodia">
     <figcaption>Angkor Wat, Cambodia</figcaption>
   </figure>
-</a>
+</div>
 
-<a href="#lb-barcelona" class="photo-grid-item">
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open="lb-barcelona">
   <figure>
     <img src="barcelona-spain.jpg" alt="Seagull over the beach in Barcelona, Spain">
     <figcaption>Barcelona, Spain</figcaption>
   </figure>
-</a>
+</div>
 
 </div>
 
-<div id="lb-seven-sisters" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-seven-sisters" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="seven-sisters-england.jpg" alt="Chalk cliffs of the Seven Sisters, Seaford, England">
 </div>
 
-<div id="lb-winter-lake" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-winter-lake" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="winter-lake-hungary.jpg" alt="Frozen lake in winter, Hungary">
 </div>
 
-<div id="lb-krk-beach" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-krk-beach" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="krk-beach-croatia.jpg" alt="Beach at Vrbnik, Krk, Croatia">
 </div>
 
-<div id="lb-balaton" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-balaton" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="balaton-hungary.jpg" alt="Lake Balaton, Hungary">
 </div>
 
-<div id="lb-mountains" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-mountains" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="mountains-china.jpg" alt="Green terraced mountains, China">
 </div>
 
-<div id="lb-koh-samui" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-koh-samui" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="koh-samui-thailand.jpg" alt="Beach at Koh Samui, Thailand">
 </div>
 
-<div id="lb-angkor-wat" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-angkor-wat" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="angkor-wat-cambodia.jpg" alt="Angkor Wat temple, Siem Reap, Cambodia">
 </div>
 
-<div id="lb-barcelona" class="lightbox">
-  <a href="#_" class="lightbox-close" aria-label="Close"></a>
+<div id="lb-barcelona" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
   <img src="barcelona-spain.jpg" alt="Seagull over the beach in Barcelona, Spain">
 </div>
+
+<script>
+(function () {
+  function close(box) {
+    box.classList.remove('is-open');
+  }
+  document.querySelectorAll('[data-lightbox-open]').forEach(function (item) {
+    function open() {
+      var box = document.getElementById(item.getAttribute('data-lightbox-open'));
+      if (box) box.classList.add('is-open');
+    }
+    item.addEventListener('click', open);
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open();
+      }
+    });
+  });
+  document.querySelectorAll('[data-lightbox]').forEach(function (box) {
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target.hasAttribute('data-lightbox-close')) {
+        close(box);
+      }
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.lightbox.is-open').forEach(close);
+    }
+  });
+})();
+</script>
