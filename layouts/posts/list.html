@@ -37,7 +37,7 @@
 {{- range $paginator.Pages }}
 {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
 <article class="post-entry short-post">
-  <div class="short-post-media">
+  <div class="short-post-media" role="button" tabindex="0" data-thumb-open>
     {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
   </div>
   <div class="short-post-body">
@@ -52,7 +52,7 @@
       </span>
       {{- end }}
     </header>
-    <div class="entry-content short-post-content">
+    <div class="entry-content short-post-content md-content">
       {{ .Content }}
     </div>
     {{- if not (.Param "hideMeta") }}
@@ -86,5 +86,48 @@
   </nav>
 </footer>
 {{- end }}
+
+<div id="thumb-lightbox" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
+  <img data-lightbox-img alt="">
+</div>
+
+<script>
+(function () {
+  var box = document.getElementById('thumb-lightbox');
+  var boxImg = box.querySelector('[data-lightbox-img]');
+
+  function open(img) {
+    boxImg.setAttribute('src', img.getAttribute('src'));
+    boxImg.setAttribute('alt', img.getAttribute('alt'));
+    box.classList.add('is-open');
+  }
+
+  function close() {
+    box.classList.remove('is-open');
+  }
+
+  document.querySelectorAll('[data-thumb-open]').forEach(function (media) {
+    var img = media.querySelector('img');
+    if (!img) return;
+    media.addEventListener('click', function () { open(img); });
+    media.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open(img);
+      }
+    });
+  });
+
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target.hasAttribute('data-lightbox-close')) {
+      close();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
 
 {{- end }}{{- /* end main */ -}}

@@ -58,14 +58,14 @@ hugo --gc --minify                      # production build into ./public
   and `link` instead of the more obvious `type`/`url`. Don't rename them back
   without checking Hugo's reserved front-matter list first.
 - All three sections are in `params.mainSections` in `hugo.yaml` (drives
-  archives, prev/next nav, and what counts as "main content"). Search
-  (`index.json`) indexes all `RegularPages` regardless of section, so no
-  change needed there when adding a section.
+  prev/next nav and what counts as "main content"). Search (`index.json`)
+  indexes all `RegularPages` regardless of section, so no change needed
+  there when adding a section.
 
 ## Layout
 
 - `content/`
-  - `about.md`, `archives.md`, `search.md` — top-level pages
+  - `about.md` — top-level page
   - `posts/` — short posts, see Content types above. Mix of single
     `<slug>.md` files and **page bundles** (`<slug>/index.md` +
     `cover.jpeg`). Use a bundle when the post has a cover image or other
@@ -90,6 +90,18 @@ hugo --gc --minify                      # production build into ./public
     **Only handles the simple `[section, current]` case.** If the site grows
     deeper hierarchies, extend it. If PaperMod is updated, diff their
     `schema_json.html` against this file.
+  - `header.html` — replaces PaperMod's search-as-a-page nav link with a
+    magnifier icon that expands into an input + results dropdown
+    (`.nav-search`, wired up by `assets/js/nav-search.js`). There is no
+    `/search/` content page; the search index (`/index.json`, from
+    PaperMod's `layouts/_default/index.json`) is a home output format and
+    exists regardless. **Don't reuse PaperMod's own
+    `themes/PaperMod/assets/js/fastsearch.js`** for this — it fetches
+    `../index.json`, a path relative to the *current page URL*, which only
+    resolves correctly from a page actually located at `/search/`. Loading
+    it from every page (as this header does) would fetch the wrong URL on
+    every page except the site root's siblings. `nav-search.js` is a
+    from-scratch equivalent that fetches the absolute `/index.json` instead.
 - `layouts/posts/list.html` — overrides the `/posts/` list page only (Hugo's
   section-template lookup). See Content types above.
 - `layouts/projects/single.html` — overrides project detail pages only. See
@@ -106,6 +118,10 @@ hugo --gc --minify                      # production build into ./public
     doesn't affect `articles` or the homepage.
   - `css/extended/projects.css` — styles the type badge + external link row
     on project detail pages (`.project-meta`).
+  - `css/extended/nav-search.css` — styles the header search icon/panel
+    (`.nav-search`).
+  - `js/nav-search.js` — the header search's Fuse.js query logic. See the
+    `header.html` note above for why this isn't PaperMod's own search JS.
 - `static/` — favicons (`favicon.ico`, `favicon.svg`, PNGs, apple-touch,
   safari-pinned-tab), `_headers` (Cloudflare Pages cache-control rules).
   Copied to site root verbatim.

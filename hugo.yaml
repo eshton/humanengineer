@@ -60,8 +60,6 @@ params:
         url: projects
       - name: About
         url: about
-      - name: Archive
-        url: archives
 
   homeInfoParams:
     Title: "Agoston Fung"
@@ -114,14 +112,6 @@ menu:
       name: Projects
       url: /projects/
       weight: 17
-    - identifier: archives
-      name: Archive
-      url: /archives/
-      weight: 20
-    - identifier: search
-      name: Search
-      url: /search/
-      weight: 30
     - identifier: about
       name: About
       url: /about/

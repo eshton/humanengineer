@@ -16,6 +16,10 @@
     display: none;
 }
 
+.short-post-media:not(:empty) {
+    cursor: zoom-in;
+}
+
 .short-post-media .entry-cover {
     margin-bottom: 0;
 }
@@ -24,6 +28,11 @@
     width: 96px;
     height: 96px;
     object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+.short-post-media:not(:empty):hover .entry-cover img {
+    transform: scale(1.05);
 }
 
 .short-post-body {
