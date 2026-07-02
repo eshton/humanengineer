@@ -1,0 +1,32 @@
+/* Project detail page: type badge + external project link, shown between
+   the title and the post meta row on layouts/projects/single.html. */
+
+.project-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0.6rem 0;
+}
+
+.project-type {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--primary);
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+}

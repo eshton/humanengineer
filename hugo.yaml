@@ -30,6 +30,7 @@ params:
   description: "Where Engineering Meets The Individual — notes on software, systems, and the craft, by Agoston Fung."
   author: Agoston Fung
   keywords: ["software engineering", "consulting", "Equal Experts", "Budapest", "blog", "portfolio"]
+  mainSections: ["posts", "articles", "projects"]
   defaultTheme: auto
   ShowReadingTime: true
   ShowShareButtons: true
@@ -53,6 +54,10 @@ params:
     buttons:
       - name: Posts
         url: posts
+      - name: Articles
+        url: articles
+      - name: Projects
+        url: projects
       - name: About
         url: about
       - name: Archive
@@ -101,6 +106,14 @@ menu:
       name: Posts
       url: /posts/
       weight: 10
+    - identifier: articles
+      name: Articles
+      url: /articles/
+      weight: 15
+    - identifier: projects
+      name: Projects
+      url: /projects/
+      weight: 17
     - identifier: archives
       name: Archive
       url: /archives/

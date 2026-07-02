@@ -1,0 +1,52 @@
+/* Posts list: small thumbnail + full post content inline, instead of a
+   summary teaser. Scoped to .short-post so the Articles section (and
+   homepage) keep PaperMod's default card layout. */
+
+.short-post {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap);
+}
+
+.short-post-media {
+    flex: 0 0 auto;
+}
+
+.short-post-media:empty {
+    display: none;
+}
+
+.short-post-media .entry-cover {
+    margin-bottom: 0;
+}
+
+.short-post-media .entry-cover img {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+}
+
+.short-post-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.short-post-content {
+    color: var(--primary);
+    font-size: 15px;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: unset;
+}
+
+@media (max-width: 600px) {
+    .short-post {
+        flex-direction: column;
+    }
+
+    .short-post-media .entry-cover img {
+        width: 100%;
+        height: auto;
+        max-height: 220px;
+    }
+}
