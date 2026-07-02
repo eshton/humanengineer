@@ -19,23 +19,45 @@
       {{ .Description }}
     </div>
     {{- end }}
-    {{- if (or (.Param "projectType") (.Param "link")) }}
-    <div class="project-meta">
-      {{- with (.Param "projectType") }}
-      <span class="project-type">{{ . }}</span>
-      {{- end }}
-      {{- with (.Param "link") }}
-      <a class="project-link" href="{{ . }}" target="_blank" rel="noopener noreferrer">
-        Visit project
-        <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-          stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="14" width="14">
-          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-          <path d="M15 3h6v6"></path>
-          <path d="M10 14L21 3"></path>
-        </svg>
-      </a>
-      {{- end }}
-    </div>
+    {{- if (or (.Param "projectType") (.Param "platform") (.Param "status") (.Param "link")) }}
+    <table class="project-specs">
+      <tbody>
+        {{- with (.Param "projectType") }}
+        <tr>
+          <th>Type</th>
+          <td>{{ . }}</td>
+        </tr>
+        {{- end }}
+        {{- with (.Param "platform") }}
+        <tr>
+          <th>Platform</th>
+          <td>{{ . }}</td>
+        </tr>
+        {{- end }}
+        {{- with (.Param "status") }}
+        <tr>
+          <th>Status</th>
+          <td>{{ . }}</td>
+        </tr>
+        {{- end }}
+        {{- with (.Param "link") }}
+        <tr>
+          <th>Link</th>
+          <td>
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
+              {{ . | replaceRE "^https?://" "" | strings.TrimSuffix "/" }}
+              <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                <path d="M15 3h6v6"></path>
+                <path d="M10 14L21 3"></path>
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {{- end }}
+      </tbody>
+    </table>
     {{- end }}
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">

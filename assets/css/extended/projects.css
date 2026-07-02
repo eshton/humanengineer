@@ -1,32 +1,96 @@
-/* Project detail page: type badge + external project link, shown between
-   the title and the post meta row on layouts/projects/single.html. */
+/* Project detail page: a spec table (Type/Platform/Status/Link) shown
+   between the title and the post meta row on
+   layouts/projects/single.html, styled like a product document. */
 
-.project-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin: 0.6rem 0;
+.project-specs {
+    width: 100%;
+    max-width: 480px;
+    margin: 0.8rem 0;
+    border-collapse: collapse;
+    font-size: 0.9rem;
 }
 
-.project-type {
-    display: inline-block;
-    padding: 0.15rem 0.6rem;
-    border-radius: 999px;
-    background: var(--code-bg);
-    border: 1px solid var(--border);
+.project-specs tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.project-specs tr:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.project-specs th,
+.project-specs td {
+    padding: 0.5rem 0.2rem;
+    text-align: left;
+    font-weight: 400;
+    vertical-align: top;
+}
+
+.project-specs th {
+    width: 30%;
     color: var(--secondary);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
 }
 
-.project-link {
+.project-specs td {
+    color: var(--primary);
+}
+
+.project-specs td a {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    color: var(--primary);
-    font-size: 0.9rem;
     text-decoration: underline;
     text-underline-offset: 0.2rem;
+}
+
+/* Project list page: picture-only grid, title + date underneath. See
+   layouts/projects/list.html. */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--gap);
+    margin: 1.5rem 0;
+}
+
+.project-grid-item {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-grid-item .entry-cover {
+    margin-bottom: 0.6rem;
+}
+
+.project-grid-item .entry-cover img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    transition: transform 0.25s ease;
+}
+
+.project-grid-item:hover .entry-cover img {
+    transform: scale(1.03);
+}
+
+.project-grid-caption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.6rem;
+}
+
+.project-grid-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.project-grid-caption time {
+    flex: 0 0 auto;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    white-space: nowrap;
 }

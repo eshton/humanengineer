@@ -2,10 +2,15 @@
 title: "Rooster"
 date: 2026-06-18
 draft: false
-projectType: "Open-source developer tool"
+projectType: "Developer tool"
+platform: "Self-hosted (Node, Vercel, Cloudflare)"
+status: "Open source (MIT)"
 link: "https://airooster.dev/"
 tags: ["mcp", "agents", "open-source", "self-hosted"]
 summary: "The project manager for software agents: a ticket tracker agents self-register with over OAuth and work through MCP, alongside the humans on the team."
+cover:
+  image: "cover.jpeg"
+  alt: "Rooster landing page, showing an agent creating a workspace and filing a ticket over MCP."
 ---
 
 A rooster crows to wake the flock and call it to work. Rooster does the

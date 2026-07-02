@@ -2,10 +2,15 @@
 title: "Kilenc — Classic Sudoku"
 date: 2026-07-02
 draft: false
-projectType: "iOS & Android app"
+projectType: "Puzzle game"
+platform: "iOS, Android"
+status: "Available now"
 link: "https://sudoku.arminfelix.com/"
 tags: ["sudoku", "mobile", "swiftui", "jetpack-compose"]
 summary: "A classic Sudoku app with zero ads, zero accounts, and zero tracking — built natively for iOS and Android."
+cover:
+  image: "cover.jpeg"
+  alt: "Kilenc Sudoku landing page, showing the app running on iPhone in light and dark mode."
 ---
 
 Sudoku that respects your time, your eyes, and your data. Kilenc never

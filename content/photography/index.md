@@ -74,78 +74,64 @@ between photos.
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="prague-czechia.jpg" alt="Old Town Square towers, Prague, Czechia" data-location="Prague, Czechia">
-    <figcaption>Prague, Czechia</figcaption>
+    <img src="costa-brava-sagaro-spain.jpg" alt="Bay of S'Agaro on the Costa Brava, Spain" data-location="Costa Brava, Spain">
+    <figcaption>Costa Brava, Spain</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="santorini-greece.jpg" alt="Blue-domed churches overlooking the caldera, Santorini, Greece" data-location="Santorini, Greece">
-    <figcaption>Santorini, Greece</figcaption>
+    <img src="costa-brava-cove-spain.jpg" alt="Rocky cove on the Costa Brava, Spain" data-location="Costa Brava, Spain">
+    <figcaption>Costa Brava, Spain</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="kyoto-japan.jpg" alt="Kinkaku-ji, the Golden Pavilion, Kyoto, Japan" data-location="Kyoto, Japan">
-    <figcaption>Kyoto, Japan</figcaption>
+    <img src="hong-kong.jpg" alt="Hong Kong skyline at sunset from Victoria Peak" data-location="Hong Kong">
+    <figcaption>Hong Kong</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="marrakech-morocco.jpg" alt="Minaret over the souk, Marrakech, Morocco" data-location="Marrakech, Morocco">
-    <figcaption>Marrakech, Morocco</figcaption>
+    <img src="shanghai-china.jpg" alt="Shanghai skyline at night, with the Oriental Pearl Tower" data-location="Shanghai, China">
+    <figcaption>Shanghai, China</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="swiss-alps-switzerland.jpg" alt="Alpine ridge and glaciers, Swiss Alps, Switzerland" data-location="Swiss Alps, Switzerland">
-    <figcaption>Swiss Alps, Switzerland</figcaption>
+    <img src="national-park-gorge-china.jpg" alt="Misty gorge in a national park, China" data-location="National park, China">
+    <figcaption>National park, China</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="iceland-skogafoss.jpg" alt="Skogafoss waterfall, Iceland" data-location="Skogafoss, Iceland">
-    <figcaption>Skogafoss, Iceland</figcaption>
+    <img src="ta-prohm-angkor-cambodia.jpg" alt="Silk-cotton tree growing through the ruins of Ta Prohm, Angkor, Cambodia" data-location="Ta Prohm, Angkor, Cambodia">
+    <figcaption>Ta Prohm, Angkor, Cambodia</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="norway-fjord.jpg" alt="Sunset over Trondheim Fjord, Norway" data-location="Trondheim Fjord, Norway">
-    <figcaption>Trondheim Fjord, Norway</figcaption>
+    <img src="angkor-wat-rainbow-cambodia.jpg" alt="Rainbow over Angkor Wat, Cambodia" data-location="Angkor Wat, Cambodia">
+    <figcaption>Angkor Wat, Cambodia</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="ha-long-bay-vietnam.jpg" alt="Limestone karsts of Ha Long Bay, Vietnam" data-location="Ha Long Bay, Vietnam">
-    <figcaption>Ha Long Bay, Vietnam</figcaption>
+    <img src="cambodia-countryside.jpg" alt="Dirt road through rice paddies in the Cambodian countryside" data-location="Countryside, Cambodia">
+    <figcaption>Countryside, Cambodia</figcaption>
   </figure>
 </div>
 
 <div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
   <figure>
-    <img src="machu-picchu-peru.jpg" alt="The Incan citadel of Machu Picchu, Peru" data-location="Machu Picchu, Peru">
-    <figcaption>Machu Picchu, Peru</figcaption>
-  </figure>
-</div>
-
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="venice-italy.jpg" alt="Gondolas on a canal in Venice, Italy" data-location="Venice, Italy">
-    <figcaption>Venice, Italy</figcaption>
-  </figure>
-</div>
-
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="bali-indonesia.jpg" alt="Rice terraces below a volcano, Bali, Indonesia" data-location="Bali, Indonesia">
-    <figcaption>Bali, Indonesia</figcaption>
+    <img src="balaton-marina-hungary.jpg" alt="Marina on Lake Balaton, Hungary" data-location="Lake Balaton, Hungary">
+    <figcaption>Lake Balaton, Hungary</figcaption>
   </figure>
 </div>
 

@@ -47,12 +47,15 @@ hugo --gc --minify                      # production build into ./public
   default section list (cover image + summary teaser card, like `posts`
   used to look). Single-article pages use the default PaperMod
   `single.html`, same as posts.
-- **`projects`** — portfolio entries. No list override (same default teaser
-  card as `articles`). Single-project pages use `layouts/projects/single.html`,
-  which adds a type badge + "Visit project" external link between the title
-  and the post meta row, reading the `projectType` and `link` front-matter
-  fields. The page body (regular markdown) is the project description,
-  rendered exactly like a post/article. **`type` and `url` are reserved Hugo
+- **`projects`** — portfolio entries, always page bundles (need a `cover`
+  image). `/projects/` is a picture-only grid — cover image, title, date,
+  nothing else — via `layouts/projects/list.html`. Single-project pages use
+  `layouts/projects/single.html`, which renders a spec table (Type,
+  Platform, Status, Link — whichever front-matter fields are present) right
+  under the title, like a product document, before the meta row and cover
+  image. The page body (regular markdown) is the project description,
+  rendered exactly like a post/article. Front matter fields: `projectType`,
+  `platform`, `status`, `link`. **`type` and `url` are reserved Hugo
   front-matter keys** (they override the page's template-lookup Type and its
   permalink, respectively) — that's why the fields are named `projectType`
   and `link` instead of the more obvious `type`/`url`. Don't rename them back
@@ -72,13 +75,13 @@ hugo --gc --minify                      # production build into ./public
     co-located assets.
   - `articles/` — long-form posts, see Content types above. Same
     single-file-vs-bundle convention as `posts`.
-  - `projects/` — portfolio entries, see Content types above. Same
-    single-file-vs-bundle convention as `posts`.
+  - `projects/` — portfolio entries, see Content types above. Always page
+    bundles (`<slug>/index.md` + `cover.jpeg`), unlike `posts`/`articles`.
 - `archetypes/default.md` — front-matter template for `hugo new content
   posts/...`. `archetypes/articles.md` and `archetypes/projects.md` —
   templates for `hugo new content articles/...` / `projects/...` (both add a
-  `cover` block; `projects.md` also adds `projectType`/`link`). All ship as
-  `draft: true` until flipped manually.
+  `cover` block; `projects.md` also adds `projectType`/`platform`/`status`/
+  `link`). All ship as `draft: true` until flipped manually.
 - `layouts/partials/` — **theme overrides only**. Anything here shadows the
   matching path under `themes/PaperMod/layouts/`.
   - `index_profile.html` — overrides PaperMod's homepage profile to append a
@@ -104,8 +107,8 @@ hugo --gc --minify                      # production build into ./public
     from-scratch equivalent that fetches the absolute `/index.json` instead.
 - `layouts/posts/list.html` — overrides the `/posts/` list page only (Hugo's
   section-template lookup). See Content types above.
-- `layouts/projects/single.html` — overrides project detail pages only. See
-  Content types above.
+- `layouts/projects/list.html` and `layouts/projects/single.html` — override
+  the `/projects/` list and project detail pages. See Content types above.
 - `assets/`
   - `images/profile.jpg` — 3148×3148 source, Hugo resizes to 220×220 (×2 for
     retina) via the profile partial. Image resizing **only runs when
@@ -116,8 +119,9 @@ hugo --gc --minify                      # production build into ./public
   - `css/extended/posts-list.css` — styles the `/posts/` thumbnail+full-content
     list layout (see Content types above), scoped to `.short-post` so it
     doesn't affect `articles` or the homepage.
-  - `css/extended/projects.css` — styles the type badge + external link row
-    on project detail pages (`.project-meta`).
+  - `css/extended/projects.css` — styles the spec table on project detail
+    pages (`.project-specs`) and the picture-only `/projects/` grid
+    (`.project-grid`).
   - `css/extended/nav-search.css` — styles the header search icon/panel
     (`.nav-search`).
   - `js/nav-search.js` — the header search's Fuse.js query logic. See the
@@ -145,6 +149,11 @@ hugo --gc --minify                      # production build into ./public
 
 ## Gotchas
 
+- `content/photography/` images must be **the site owner's own photos** —
+  sourced from their Pexels profile
+  (`https://www.pexels.com/hu-hu/@agoston-fung-1165130/`), not generic
+  stock photos from other Pexels contributors, even though the page text
+  says "up on Pexels." Verify the photographer/profile before adding one.
 - `themes/PaperMod` is a submodule — don't edit files inside it; add an
   override under `layouts/` instead. Submodule changes won't survive a
   theme update.

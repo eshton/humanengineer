@@ -2,10 +2,15 @@
 title: "Amoeba"
 date: 2026-06-25
 draft: false
-projectType: "iOS, iPad & tvOS app"
+projectType: "Two-player game"
+platform: "iOS, iPad, Apple TV"
+status: "Coming soon"
 link: "https://amoeba.arminfelix.com/"
 tags: ["game", "swiftui", "tvos"]
 summary: "Five in a row, evolved: a hot-seat, two-player game on an endless field where every winning row seals into a wobbly organic amoeba."
+cover:
+  image: "cover.jpeg"
+  alt: "Amoeba landing page, showing the endless-field board running on iPhone."
 ---
 
 Pass the device. Take turns placing X and O on an endless field. Make
