@@ -1,0 +1,94 @@
+# EXIF/photo details pasted from Pexels' owner-only "Fotó adatai" panel
+# (Photo details modal, visible when logged in as the photo's uploader).
+# Keyed by the image filename under content/photography/. Not wired into
+# any template yet — collected here for a future feature that displays
+# this on the photography page.
+#
+# Fields: dimensions, aspectRatio, camera, focalLength, aperture, iso,
+# shutterSpeed, dateTaken, software, location (add when pasted).
+
+winter-lake-hungary.jpg:
+  dimensions: "5358 x 3572"
+  aspectRatio: "3:2"
+  camera: "Canon EOS 70D"
+  focalLength: "10.0mm"
+  aperture: "f/11.0"
+  iso: 100
+  shutterSpeed: "1/2 second"
+  dateTaken: "2020-12-13"
+  software: "Adobe Photoshop Lightroom 6.1 (Windows)"
+
+krk-beach-croatia.jpg:
+  dimensions: "5420 x 3574"
+  aspectRatio: "2710:1787"
+  camera: "Canon EOS 70D"
+  focalLength: "18.0mm"
+  aperture: "f/3.5"
+  iso: 1600
+  shutterSpeed: "1/4 second"
+  dateTaken: "2019-08-22"
+  software: "Adobe Photoshop Lightroom 6.1 (Windows)"
+
+balaton-hungary.jpg:
+  dimensions: "4032 x 3024"
+  aspectRatio: "4:3"
+  camera: "iPhone 11"
+  focalLength: "4.25mm"
+  aperture: "f/1.8"
+  iso: 32
+  shutterSpeed: "1/730 second"
+  dateTaken: "2020-01-20"
+  software: "Photoshop Express 7.8.5.2184"
+
+mountains-china.jpg:
+  dimensions: "5472 x 3648"
+  aspectRatio: "3:2"
+  camera: "Canon EOS 70D"
+  focalLength: "10.0mm"
+  aperture: "f/9.0"
+  iso: 100
+  dateTaken: "2018-09-10"
+  software: "Adobe Photoshop Lightroom 5.6 (Macintosh)"
+
+koh-samui-thailand.jpg:
+  dimensions: "5354 x 3569"
+  camera: "Canon EOS 70D"
+  focalLength: "10.0mm"
+  aperture: "f/13.0"
+  iso: 100
+  dateTaken: "2014-09-18"
+  software: "Adobe Photoshop Lightroom 5.6 (Macintosh)"
+
+balaton-marina-hungary.jpg:
+  dimensions: "5472 x 3648"
+  aspectRatio: "3:2"
+  camera: "Canon EOS 70D"
+  focalLength: "10.0mm"
+  aperture: "f/11.0"
+  iso: 100
+  dateTaken: "2016-05-28"
+  software: "Adobe Photoshop Lightroom 5.6 (Macintosh)"
+
+barcelona-spain.jpg:
+  dimensions: "4703 x 3130"
+  camera: "Canon EOS 70D"
+  focalLength: "46.0mm"
+  aperture: "f/5.6"
+  iso: 250
+  dateTaken: "2014-08-04"
+  software: "Adobe Photoshop Lightroom 5.6 (Macintosh)"
+
+shanghai-china.jpg:
+  dimensions: "5115 x 3129"
+  aspectRatio: "1705:1043"
+  camera: "Canon EOS 70D"
+  focalLength: "18.0mm"
+  aperture: "f/10.0"
+  iso: 100
+  dateTaken: "2018-09-16"
+  software: "Adobe Photoshop Lightroom 5.6 (Macintosh)"
+
+seven-sisters-england.jpg:
+  dimensions: "4032 x 3024"
+  aspectRatio: "4:3"
+  camera: "iPhone 14 Pro Max"
