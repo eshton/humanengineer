@@ -54,8 +54,6 @@ params:
     buttons:
       - name: Posts
         url: posts
-      - name: Articles
-        url: articles
       - name: Projects
         url: projects
       - name: About
@@ -104,10 +102,6 @@ menu:
       name: Posts
       url: /posts/
       weight: 10
-    - identifier: articles
-      name: Articles
-      url: /articles/
-      weight: 15
     - identifier: projects
       name: Projects
       url: /projects/

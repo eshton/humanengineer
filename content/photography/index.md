@@ -50,6 +50,14 @@ between photos.
 
 {{% photo file="balaton-marina-hungary.jpg" location="Lake Balaton, Hungary" alt="Marina on Lake Balaton, Hungary" %}}{{% /photo %}}
 
+{{% photo file="balaton-boats-hungary.jpg" location="Lake Balaton, Hungary" alt="Sailboats moored on Lake Balaton, Hungary" %}}{{% /photo %}}
+
+{{% photo file="sant-feliu-de-guixols-spain.jpg" location="Sant Feliu de Guíxols, Spain" alt="Aerial view of the bay and beach of Sant Feliu de Guíxols, Spain" %}}{{% /photo %}}
+
+{{% photo file="costa-brava-rocks-spain.jpg" location="Costa Brava, Spain" alt="Rocky inlet on the Costa Brava, Spain" %}}{{% /photo %}}
+
+{{% photo file="china-city-park-dusk.jpg" location="China" alt="Skyscraper reflected in a park lake at dusk, China" %}}{{% /photo %}}
+
 </div>
 
 {{% photo-lightbox %}}
