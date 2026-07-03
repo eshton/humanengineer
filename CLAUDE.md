@@ -42,7 +42,8 @@ hugo --gc --minify                      # production build into ./public
   rendered content per entry, not a truncated summary — see
   `layouts/posts/list.html` and `assets/css/extended/posts-list.css`. Only
   this section gets that treatment; keep posts genuinely short or the list
-  page gets long.
+  page gets long. Per-entry meta is just the date (`.entry-date`, placed
+  right under the title) — no author/reading-time/word-count footer.
 - **`articles`** — long-form posts. No list override — uses PaperMod's
   default section list (cover image + summary teaser card, like `posts`
   used to look). Single-article pages use the default PaperMod
@@ -59,7 +60,12 @@ hugo --gc --minify                      # production build into ./public
   front-matter keys** (they override the page's template-lookup Type and its
   permalink, respectively) — that's why the fields are named `projectType`
   and `link` instead of the more obvious `type`/`url`. Don't rename them back
-  without checking Hugo's reserved front-matter list first.
+  without checking Hugo's reserved front-matter list first. Prev/next nav on
+  project pages is scoped to `.CurrentSection.RegularPages` inline in
+  `layouts/projects/single.html` rather than calling PaperMod's shared
+  `post_nav_links.html` partial — that partial pools every `mainSections`
+  entry together, so a project's prev/next would otherwise jump into
+  `posts`/`articles`.
 - All three sections are in `params.mainSections` in `hugo.yaml` (drives
   prev/next nav and what counts as "main content"). Search (`index.json`)
   indexes all `RegularPages` regardless of section, so no change needed

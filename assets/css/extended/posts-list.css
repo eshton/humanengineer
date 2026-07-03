@@ -40,6 +40,12 @@
     min-width: 0;
 }
 
+.short-post-body .entry-date {
+    margin: 4px 0 8px;
+    color: var(--secondary);
+    font-size: 13px;
+}
+
 .short-post-content {
     color: var(--primary);
     font-size: 15px;

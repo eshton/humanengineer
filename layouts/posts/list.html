@@ -52,14 +52,14 @@
       </span>
       {{- end }}
     </header>
+    {{- if not .Date.IsZero }}
+    <div class="entry-date">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format (default ":date_long" site.Params.DateFormat) }}</time>
+    </div>
+    {{- end }}
     <div class="entry-content short-post-content md-content">
       {{ .Content }}
     </div>
-    {{- if not (.Param "hideMeta") }}
-    <footer class="entry-footer">
-      {{- partial "post_meta.html" . -}}
-    </footer>
-    {{- end }}
   </div>
 </article>
 {{- end }}

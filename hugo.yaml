@@ -46,18 +46,11 @@ params:
   profileMode:
     enabled: true
     title: "Agoston Fung"
-    subtitle: "*Where Engineering Meets The Individual.*<br><br>Engineer in Budapest, 20+ years across startups and enterprises. Currently consulting through [Equal Experts](https://www.equalexperts.com/)."
+    subtitle: "*Where Engineering Meets The Individual.*<br><br>Engineer in Budapest, 20+ years across startups and enterprises.<br><br>Currently consulting through [Equal Experts](https://www.equalexperts.com/)."
     imageUrl: "images/profile.jpg"
     imageTitle: "Agoston Fung"
     imageWidth: 220
     imageHeight: 220
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Projects
-        url: projects
-      - name: About
-        url: about
 
   homeInfoParams:
     Title: "Agoston Fung"
@@ -105,18 +98,18 @@ menu:
     - identifier: projects
       name: Projects
       url: /projects/
-      weight: 17
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 40
+      weight: 20
     - identifier: cv
       name: CV
       url: /cv/
-      weight: 45
+      weight: 30
     - identifier: photography
       name: Photography
       url: /photography/
+      weight: 40
+    - identifier: about
+      name: About
+      url: /about/
       weight: 50
 
 markup:
