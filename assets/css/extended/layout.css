@@ -1,0 +1,8 @@
+/* Site-wide layout overrides. PaperMod caps the whole content column
+   (.main, footer, and via profile-posts.css the homepage recent-posts
+   list) at --main-width through calc() — bump it once here instead of
+   touching every page/template. --nav-width (header bar) is left as-is. */
+
+:root {
+    --main-width: 900px;
+}

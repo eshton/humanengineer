@@ -1,0 +1,29 @@
+{{- /* Usage: {{% photo file="x.jpg" location="Place, Country" alt="..." %}}
+   optional story markdown goes here{{% /photo %}}
+   Pulls camera/exposure details from data/photo-exif.yaml (keyed by
+   filename) so they don't have to be repeated by hand. See
+   layouts/partials/photo-lightbox.html for how this is consumed. */ -}}
+{{- $file := .Get "file" -}}
+{{- $location := .Get "location" -}}
+{{- $alt := .Get "alt" -}}
+{{- $exifData := index site.Data "photo-exif" -}}
+{{- $exif := or (index $exifData $file) dict -}}
+{{- $story := trim .Inner "\n" -}}
+<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open
+  data-location="{{ $location }}"
+  {{- with $exif.dimensions }} data-dimensions="{{ . }}"{{ end }}
+  {{- with $exif.camera }} data-camera="{{ . }}"{{ end }}
+  {{- with $exif.focalLength }} data-focal-length="{{ . }}"{{ end }}
+  {{- with $exif.aperture }} data-aperture="{{ . }}"{{ end }}
+  {{- with $exif.iso }} data-iso="{{ . }}"{{ end }}
+  {{- with $exif.shutterSpeed }} data-shutter-speed="{{ . }}"{{ end }}
+  {{- with $exif.dateTaken }} data-date-taken="{{ dateFormat "Jan 2, 2006" . }}"{{ end -}}
+>
+  <figure>
+    <img src="{{ $file }}" alt="{{ $alt }}">
+    <figcaption>{{ $location }}</figcaption>
+  </figure>
+  {{- with $story }}
+  <div class="photo-story" hidden>{{ . }}</div>
+  {{- end }}
+</div>

@@ -16,193 +16,40 @@ between photos.
 
 <div class="photo-grid">
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="seven-sisters-england.jpg" alt="Chalk cliffs of the Seven Sisters, Seaford, England" data-location="Seven Sisters, Seaford, England">
-    <figcaption>Seven Sisters, Seaford, England</figcaption>
-  </figure>
-</div>
+{{% photo file="seven-sisters-england.jpg" location="Seven Sisters, Seaford, England" alt="Chalk cliffs of the Seven Sisters, Seaford, England" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="winter-lake-hungary.jpg" alt="Frozen lake in winter, Hungary" data-location="Winter lake, Hungary">
-    <figcaption>Winter lake, Hungary</figcaption>
-  </figure>
-</div>
+{{% photo file="winter-lake-hungary.jpg" location="Winter lake, Hungary" alt="Frozen lake in winter, Hungary" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="krk-beach-croatia.jpg" alt="Beach at Vrbnik, Krk, Croatia" data-location="Krk, Croatia">
-    <figcaption>Krk, Croatia</figcaption>
-  </figure>
-</div>
+{{% photo file="krk-beach-croatia.jpg" location="Krk, Croatia" alt="Beach at Vrbnik, Krk, Croatia" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="balaton-hungary.jpg" alt="Lake Balaton, Hungary" data-location="Lake Balaton, Hungary">
-    <figcaption>Lake Balaton, Hungary</figcaption>
-  </figure>
-</div>
+{{% photo file="balaton-hungary.jpg" location="Lake Balaton, Hungary" alt="Lake Balaton, Hungary" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="mountains-china.jpg" alt="Green terraced mountains, China" data-location="Terraced mountains, China">
-    <figcaption>Terraced mountains, China</figcaption>
-  </figure>
-</div>
+{{% photo file="mountains-china.jpg" location="Terraced mountains, China" alt="Green terraced mountains, China" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="koh-samui-thailand.jpg" alt="Beach at Koh Samui, Thailand" data-location="Koh Samui, Thailand">
-    <figcaption>Koh Samui, Thailand</figcaption>
-  </figure>
-</div>
+{{% photo file="koh-samui-thailand.jpg" location="Koh Samui, Thailand" alt="Beach at Koh Samui, Thailand" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="angkor-wat-cambodia.jpg" alt="Angkor Wat temple, Siem Reap, Cambodia" data-location="Angkor Wat, Cambodia">
-    <figcaption>Angkor Wat, Cambodia</figcaption>
-  </figure>
-</div>
+{{% photo file="angkor-wat-cambodia.jpg" location="Angkor Wat, Cambodia" alt="Angkor Wat temple, Siem Reap, Cambodia" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="barcelona-spain.jpg" alt="Seagull over the beach in Barcelona, Spain" data-location="Barcelona, Spain">
-    <figcaption>Barcelona, Spain</figcaption>
-  </figure>
-</div>
+{{% photo file="barcelona-spain.jpg" location="Barcelona, Spain" alt="Seagull over the beach in Barcelona, Spain" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="costa-brava-sagaro-spain.jpg" alt="Bay of S'Agaro on the Costa Brava, Spain" data-location="Costa Brava, Spain">
-    <figcaption>Costa Brava, Spain</figcaption>
-  </figure>
-</div>
+{{% photo file="costa-brava-sagaro-spain.jpg" location="Costa Brava, Spain" alt="Bay of S'Agaro on the Costa Brava, Spain" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="costa-brava-cove-spain.jpg" alt="Rocky cove on the Costa Brava, Spain" data-location="Costa Brava, Spain">
-    <figcaption>Costa Brava, Spain</figcaption>
-  </figure>
-</div>
+{{% photo file="costa-brava-cove-spain.jpg" location="Costa Brava, Spain" alt="Rocky cove on the Costa Brava, Spain" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="hong-kong.jpg" alt="Hong Kong skyline at sunset from Victoria Peak" data-location="Hong Kong">
-    <figcaption>Hong Kong</figcaption>
-  </figure>
-</div>
+{{% photo file="hong-kong.jpg" location="Hong Kong" alt="Hong Kong skyline at sunset from Victoria Peak" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="shanghai-china.jpg" alt="Shanghai skyline at night, with the Oriental Pearl Tower" data-location="Shanghai, China">
-    <figcaption>Shanghai, China</figcaption>
-  </figure>
-</div>
+{{% photo file="shanghai-china.jpg" location="Shanghai, China" alt="Shanghai skyline at night, with the Oriental Pearl Tower" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="national-park-gorge-china.jpg" alt="Misty gorge in a national park, China" data-location="National park, China">
-    <figcaption>National park, China</figcaption>
-  </figure>
-</div>
+{{% photo file="national-park-gorge-china.jpg" location="National park, China" alt="Misty gorge in a national park, China" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="ta-prohm-angkor-cambodia.jpg" alt="Silk-cotton tree growing through the ruins of Ta Prohm, Angkor, Cambodia" data-location="Ta Prohm, Angkor, Cambodia">
-    <figcaption>Ta Prohm, Angkor, Cambodia</figcaption>
-  </figure>
-</div>
+{{% photo file="ta-prohm-angkor-cambodia.jpg" location="Ta Prohm, Angkor, Cambodia" alt="Silk-cotton tree growing through the ruins of Ta Prohm, Angkor, Cambodia" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="angkor-wat-rainbow-cambodia.jpg" alt="Rainbow over Angkor Wat, Cambodia" data-location="Angkor Wat, Cambodia">
-    <figcaption>Angkor Wat, Cambodia</figcaption>
-  </figure>
-</div>
+{{% photo file="angkor-wat-rainbow-cambodia.jpg" location="Angkor Wat, Cambodia" alt="Rainbow over Angkor Wat, Cambodia" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="cambodia-countryside.jpg" alt="Dirt road through rice paddies in the Cambodian countryside" data-location="Countryside, Cambodia">
-    <figcaption>Countryside, Cambodia</figcaption>
-  </figure>
-</div>
+{{% photo file="cambodia-countryside.jpg" location="Countryside, Cambodia" alt="Dirt road through rice paddies in the Cambodian countryside" %}}{{% /photo %}}
 
-<div class="photo-grid-item" role="button" tabindex="0" data-lightbox-open>
-  <figure>
-    <img src="balaton-marina-hungary.jpg" alt="Marina on Lake Balaton, Hungary" data-location="Lake Balaton, Hungary">
-    <figcaption>Lake Balaton, Hungary</figcaption>
-  </figure>
-</div>
+{{% photo file="balaton-marina-hungary.jpg" location="Lake Balaton, Hungary" alt="Marina on Lake Balaton, Hungary" %}}{{% /photo %}}
 
 </div>
 
-<div id="lightbox" class="lightbox" data-lightbox>
-  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
-  <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous photo">&#8249;</button>
-  <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next photo">&#8250;</button>
-  <img data-lightbox-img alt="">
-  <div class="lightbox-caption" data-lightbox-caption></div>
-</div>
-
-<script>
-(function () {
-  var items = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox-open]'));
-  var photos = items.map(function (item) {
-    var img = item.querySelector('img');
-    return { src: img.getAttribute('src'), alt: img.getAttribute('alt'), location: img.getAttribute('data-location') };
-  });
-
-  var box = document.getElementById('lightbox');
-  var boxImg = box.querySelector('[data-lightbox-img]');
-  var boxCaption = box.querySelector('[data-lightbox-caption]');
-  var current = 0;
-
-  function render() {
-    var photo = photos[current];
-    boxImg.setAttribute('src', photo.src);
-    boxImg.setAttribute('alt', photo.alt);
-    boxCaption.textContent = photo.location;
-  }
-
-  function open(index) {
-    current = index;
-    render();
-    box.classList.add('is-open');
-  }
-
-  function close() {
-    box.classList.remove('is-open');
-  }
-
-  function step(delta) {
-    current = (current + delta + photos.length) % photos.length;
-    render();
-  }
-
-  items.forEach(function (item, index) {
-    item.addEventListener('click', function () { open(index); });
-    item.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        open(index);
-      }
-    });
-  });
-
-  box.addEventListener('click', function (e) {
-    if (e.target === box || e.target.hasAttribute('data-lightbox-close')) {
-      close();
-    }
-  });
-  box.querySelector('[data-lightbox-prev]').addEventListener('click', function () { step(-1); });
-  box.querySelector('[data-lightbox-next]').addEventListener('click', function () { step(1); });
-
-  document.addEventListener('keydown', function (e) {
-    if (!box.classList.contains('is-open')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') step(-1);
-    if (e.key === 'ArrowRight') step(1);
-  });
-})();
-</script>
+{{% photo-lightbox %}}

@@ -109,11 +109,28 @@ hugo --gc --minify                      # production build into ./public
   section-template lookup). See Content types above.
 - `layouts/projects/list.html` and `layouts/projects/single.html` — override
   the `/projects/` list and project detail pages. See Content types above.
+- `layouts/shortcodes/photo.html` and `photo-lightbox.html` — power
+  `/photography/`. `{{% photo file="x.jpg" location="..." alt="..." %}}
+  optional story markdown {{% /photo %}}` renders one grid item and pulls
+  camera/exposure data from `data/photo-exif.yaml` (keyed by filename) so
+  it isn't repeated by hand; markdown between the tags becomes that
+  photo's "story," shown in the lightbox sidebar. `{{% photo-lightbox %}}`
+  (call once, after the grid) emits the single shared lightbox overlay —
+  image + prev/next + a right-hand sidebar with location, EXIF details,
+  and the story. Don't reuse PaperMod's per-photo lightbox pattern here;
+  this is a from-scratch single-instance overlay like the one in
+  `layouts/posts/list.html`'s thumbnail lightbox.
 - `assets/`
   - `images/profile.jpg` — 3148×3148 source, Hugo resizes to 220×220 (×2 for
     retina) via the profile partial. Image resizing **only runs when
     `params.env: production`** (already set in `hugo.yaml`); locally the
     raw image is served.
+  - `css/extended/layout.css` — site-wide layout overrides. Currently just
+    bumps `--main-width` (PaperMod theme var, default 720px) to 900px;
+    every content column, the footer, and the homepage recent-posts list
+    size off this one variable via `calc()`, so it's a single-line change
+    rather than per-page CSS. `--nav-width` (header bar, 1024px) is
+    untouched.
   - `css/extended/profile-posts.css` — styles the homepage recent-posts
     list. PaperMod auto-includes anything under `assets/css/extended/`.
   - `css/extended/posts-list.css` — styles the `/posts/` thumbnail+full-content
@@ -126,6 +143,15 @@ hugo --gc --minify                      # production build into ./public
     (`.nav-search`).
   - `js/nav-search.js` — the header search's Fuse.js query logic. See the
     `header.html` note above for why this isn't PaperMod's own search JS.
+  - `css/extended/photography.css` — styles the photo grid and the
+    lightbox (image pane + details sidebar, see the shortcodes above).
+- `data/photo-exif.yaml` — camera/lens/exposure details per photo, keyed
+  by filename, pasted from Pexels' owner-only "Fotó adatai" (photo
+  details) panel — richer than what's in the downloaded file's actual
+  EXIF (Pexels strips real camera data and re-stamps only
+  Artist/Copyright on download). Consumed by the `photo` shortcode above.
+  Not every photo has an entry yet; fields simply don't render when
+  absent.
 - `static/` — favicons (`favicon.ico`, `favicon.svg`, PNGs, apple-touch,
   safari-pinned-tab), `_headers` (Cloudflare Pages cache-control rules).
   Copied to site root verbatim.
@@ -157,6 +183,14 @@ hugo --gc --minify                      # production build into ./public
 - `themes/PaperMod` is a submodule — don't edit files inside it; add an
   override under `layouts/` instead. Submodule changes won't survive a
   theme update.
+- PaperMod styles **every** `dl`/`dt`/`dd` inside `.md-content` as a flexed
+  25%/75% two-column row (`md-content.css`). Since whole-page content
+  (e.g. `content/photography/index.md`) renders inside `.post-content
+  md-content`, any `<dl>` you hand-author or emit from a shortcode
+  inherits this — including the photography lightbox's details list,
+  which needed higher-specificity overrides (`.lightbox-sidebar
+  dl.lightbox-details`) to get plain stacked rows back. Watch for this
+  whenever adding a `dl` anywhere content renders through `.md-content`.
 - `baseURL: /` means anything that needs an absolute URL (RSS, sitemap, OG
   tags, JSON-LD) only resolves correctly on a Cloudflare Pages build, where
   `scripts/cf-pages-build.sh` injects it. Local builds will have relative

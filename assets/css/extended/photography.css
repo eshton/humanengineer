@@ -65,16 +65,6 @@
     visibility: visible;
 }
 
-.lightbox img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 4px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 1;
-    cursor: default;
-}
-
 .lightbox-close {
     position: absolute;
     inset: 0;
@@ -95,6 +85,94 @@
     line-height: 1;
     color: #fff;
     opacity: 0.8;
+}
+
+.lightbox-stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: default;
+}
+
+.lightbox-image-pane {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.lightbox-image-pane img {
+    max-width: 100%;
+    max-height: calc(100vh - 4rem);
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.lightbox-sidebar {
+    flex: 0 0 auto;
+    width: 280px;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding: 1.2rem;
+    background: var(--entry);
+    border-radius: var(--radius);
+    color: var(--primary);
+}
+
+.lightbox-sidebar h3 {
+    margin: 0 0 0.8rem;
+    font-size: 1.1rem;
+}
+
+/* Higher-specificity selectors: this lightbox lives inside .md-content
+   (the page's whole body is one markdown document), whose theme styles
+   turn every dl into a flexed 25%/75% two-column row — too cramped for
+   labels like "Shutter speed" in a 280px sidebar. Override back to a
+   simple stacked list. */
+.lightbox-sidebar dl.lightbox-details {
+    display: block;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.lightbox-sidebar dl.lightbox-details dt {
+    width: auto;
+    color: var(--secondary);
+    font-weight: 400;
+    margin-top: 0.6rem;
+}
+
+.lightbox-sidebar dl.lightbox-details dt:first-child {
+    margin-top: 0;
+}
+
+.lightbox-sidebar dl.lightbox-details dd {
+    width: auto;
+    margin: 0;
+    padding-inline-start: 0;
+    font-weight: 500;
+}
+
+.lightbox-story {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.lightbox-story p:first-child {
+    margin-top: 0;
+}
+
+.lightbox-story p:last-child {
+    margin-bottom: 0;
 }
 
 .lightbox-nav {
@@ -126,17 +204,21 @@
     right: 1rem;
 }
 
-.lightbox-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 1.5rem;
-    z-index: 1;
-    text-align: center;
-    color: #fff;
-    font-size: 0.95rem;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
-    pointer-events: none;
+@media (max-width: 900px) {
+    .lightbox-stage {
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 100%;
+    }
+
+    .lightbox-image-pane img {
+        max-height: 60vh;
+    }
+
+    .lightbox-sidebar {
+        width: 100%;
+        max-height: none;
+    }
 }
 
 @media (max-width: 600px) {

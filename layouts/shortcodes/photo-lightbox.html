@@ -1,0 +1,111 @@
+{{- /* The single lightbox overlay for the /photography/ page: image +
+   prev/next nav + a right-hand sidebar with location, EXIF details, and
+   an optional per-photo story. Paired with layouts/shortcodes/photo.html,
+   which emits the data-* attributes and .photo-story markup this reads. */ -}}
+<div id="lightbox" class="lightbox" data-lightbox>
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
+  <div class="lightbox-stage">
+    <div class="lightbox-image-pane">
+      <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous photo">&#8249;</button>
+      <img data-lightbox-img alt="">
+      <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next photo">&#8250;</button>
+    </div>
+    <aside class="lightbox-sidebar">
+      <h3 data-lightbox-location></h3>
+      <dl class="lightbox-details" data-lightbox-details></dl>
+      <div class="lightbox-story" data-lightbox-story hidden></div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function () {
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox-open]'));
+  var fields = [
+    ['dimensions', 'Dimensions'],
+    ['camera', 'Camera'],
+    ['focalLength', 'Focal length'],
+    ['aperture', 'Aperture'],
+    ['iso', 'ISO'],
+    ['shutterSpeed', 'Shutter speed'],
+    ['dateTaken', 'Taken'],
+  ];
+  var photos = items.map(function (item) {
+    var img = item.querySelector('img');
+    var story = item.querySelector('.photo-story');
+    return {
+      src: img.getAttribute('src'),
+      alt: img.getAttribute('alt'),
+      location: item.getAttribute('data-location'),
+      story: story ? story.innerHTML : '',
+      details: fields
+        .map(function (f) { return [f[1], item.dataset[f[0]]]; })
+        .filter(function (pair) { return pair[1]; }),
+    };
+  });
+
+  var box = document.getElementById('lightbox');
+  var boxImg = box.querySelector('[data-lightbox-img]');
+  var boxLocation = box.querySelector('[data-lightbox-location]');
+  var boxDetails = box.querySelector('[data-lightbox-details]');
+  var boxStory = box.querySelector('[data-lightbox-story]');
+  var current = 0;
+
+  function render() {
+    var photo = photos[current];
+    boxImg.setAttribute('src', photo.src);
+    boxImg.setAttribute('alt', photo.alt);
+    boxLocation.textContent = photo.location;
+    boxDetails.innerHTML = photo.details
+      .map(function (pair) { return '<dt>' + pair[0] + '</dt><dd>' + pair[1] + '</dd>'; })
+      .join('');
+    if (photo.story) {
+      boxStory.innerHTML = photo.story;
+      boxStory.hidden = false;
+    } else {
+      boxStory.innerHTML = '';
+      boxStory.hidden = true;
+    }
+  }
+
+  function open(index) {
+    current = index;
+    render();
+    box.classList.add('is-open');
+  }
+
+  function close() {
+    box.classList.remove('is-open');
+  }
+
+  function step(delta) {
+    current = (current + delta + photos.length) % photos.length;
+    render();
+  }
+
+  items.forEach(function (item, index) {
+    item.addEventListener('click', function () { open(index); });
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open(index);
+      }
+    });
+  });
+
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target.hasAttribute('data-lightbox-close')) {
+      close();
+    }
+  });
+  box.querySelector('[data-lightbox-prev]').addEventListener('click', function () { step(-1); });
+  box.querySelector('[data-lightbox-next]').addEventListener('click', function () { step(1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!box.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+</script>
