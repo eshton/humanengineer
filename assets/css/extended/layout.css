@@ -1,10 +1,14 @@
 /* Site-wide layout overrides. PaperMod caps the whole content column
    (.main, footer, and via profile-posts.css the homepage recent-posts
    list) at --main-width through calc() — bump it once here instead of
-   touching every page/template. --nav-width (header bar) is left as-is. */
+   touching every page/template. --nav-width (header bar) matched to the
+   same value so the header row lines up with content instead of being
+   wider (PaperMod's default nav-width is 1024px vs main-width's 720px —
+   noticeably wider even before this site's 900px bump). */
 
 :root {
     --main-width: 900px;
+    --nav-width: 900px;
 }
 
 /* PaperMod only washes list-kind pages (home, section lists, taxonomies)

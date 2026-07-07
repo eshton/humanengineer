@@ -8,6 +8,78 @@
     column-gap: var(--gap);
 }
 
+/* Hamburger toggle for the mobile menu — hidden on desktop, where the
+   full inline menu list (PaperMod's default) is shown instead. */
+.nav-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    color: var(--primary);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+}
+
+.nav-menu-toggle:hover {
+    background: var(--code-bg);
+}
+
+@media (max-width: 700px) {
+    .nav-menu-toggle {
+        display: flex;
+    }
+
+    /* .menu is positioned absolute below, anchored to .header-nav
+       instead of the viewport. */
+    .header-nav {
+        position: relative;
+    }
+
+    /* PaperMod's .menu is normally an inline, horizontally-scrolling
+       list (see header.css) — turn it into a dropdown panel toggled by
+       the hamburger button instead, mirroring .nav-search-panel. */
+    .menu {
+        position: absolute;
+        top: calc(100% + 0.6rem);
+        right: var(--gap);
+        left: var(--gap);
+        z-index: 20;
+        flex-direction: column;
+        overflow-x: visible;
+        row-gap: 0.2rem;
+        padding: 0.5rem;
+        background: var(--entry);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px);
+        transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    }
+
+    .menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu li a {
+        display: block;
+        padding: 0.6rem 0.5rem;
+        line-height: 1.4;
+    }
+}
+
 .nav-search {
     position: relative;
     display: flex;

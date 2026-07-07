@@ -126,6 +126,12 @@ hugo --gc --minify                      # production build into ./public
     it from every page (as this header does) would fetch the wrong URL on
     every page except the site root's siblings. `nav-search.js` is a
     from-scratch equivalent that fetches the absolute `/index.json` instead.
+    Also adds a hamburger button (`#nav-menu-toggle`) beside the search
+    icon — under 700px it replaces PaperMod's inline `#menu` list (which
+    otherwise just scrolled horizontally on narrow screens, per its own
+    `overflow-x: auto`) with a dropdown panel, toggled by a small inline
+    `<script>` at the bottom of this partial. Styled in
+    `css/extended/nav-search.css` alongside the search panel.
 - `layouts/posts/list.html` — overrides the `/posts/` list page only (Hugo's
   section-template lookup). See Content types above.
 - `layouts/projects/list.html` and `layouts/projects/single.html` — override
@@ -150,7 +156,9 @@ hugo --gc --minify                      # production build into ./public
     `--main-width` (PaperMod theme var, default 720px) bumped to 900px;
     every content column, the footer, and the homepage recent-posts list
     size off this one variable via `calc()`. `--nav-width` (header bar,
-    1024px) is untouched. Also sets `body { background: var(--code-bg) }`
+    default 1024px) is matched to the same 900px, so the header row lines
+    up with the content column instead of being wider. Also sets
+    `body { background: var(--code-bg) }`
     site-wide — PaperMod only washes list-kind pages (home, section
     lists, taxonomies) with `--code-bg` via its own `.list` rule
     (theme-vars.css), leaving single pages on plain `--theme`; applying
@@ -173,7 +181,8 @@ hugo --gc --minify                      # production build into ./public
     pages (`.project-specs`) and the picture-only `/projects/` grid
     (`.project-grid`).
   - `css/extended/nav-search.css` — styles the header search icon/panel
-    (`.nav-search`).
+    (`.nav-search`) and the mobile hamburger menu (`.nav-menu-toggle`,
+    `.menu` dropdown under 700px). See `header.html` above.
   - `js/nav-search.js` — the header search's Fuse.js query logic. See the
     `header.html` note above for why this isn't PaperMod's own search JS.
   - `css/extended/photography.css` — styles the photo grid and the

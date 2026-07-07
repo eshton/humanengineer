@@ -86,6 +86,15 @@
         </div>
         {{- $currentPage := . }}
         <div class="nav-right">
+            <button type="button" id="nav-menu-toggle" class="nav-menu-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
             <ul id="menu" class="menu">
                 {{- range site.Menus.main }}
                 {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
@@ -130,6 +139,35 @@
         </div>
     </nav>
 </header>
+
+<script>
+(function () {
+  var toggle = document.getElementById('nav-menu-toggle');
+  var menu = document.getElementById('menu');
+  if (!toggle || !menu) return;
+
+  function close() {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = menu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!menu.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) close();
+  });
+})();
+</script>
 
 {{- $fusejs := resources.Get "js/fuse.basic.min.js" }}
 {{- $navsearch := resources.Get "js/nav-search.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify }}
