@@ -1,8 +1,8 @@
 # CLAUDE.md
 
-Personal site for **Agoston Fung**, tagline *Where Engineering Meets The
-Individual*, hosted at `agostonfung.com`. Hugo static site, deployed on
-Cloudflare Pages.
+Personal site for **Agoston Fung**, tagline *Notes on engineering, AI, and
+the people writing it*, hosted at `agostonfung.com`. Hugo static site,
+deployed on Cloudflare Pages.
 
 ## Stack
 
@@ -63,8 +63,15 @@ hugo --gc --minify                      # production build into ./public
   front-matter keys** (they override the page's template-lookup Type and its
   permalink, respectively) — that's why the fields are named `projectType`
   and `link` instead of the more obvious `type`/`url`. Don't rename them back
-  without checking Hugo's reserved front-matter list first. Prev/next nav on
-  project pages is scoped to `.CurrentSection.RegularPages` inline in
+  without checking Hugo's reserved front-matter list first. The same four
+  fields double up for non-software entries — three publications
+  (`symfony-article`, `narcissism-coping-study`, and the `starcraft2-hungary`
+  fan site) live in `projects` too, just with `projectType`/`platform`/
+  `status` values that read as "Publication"/journal name/citation count
+  (or, for the defunct StarCraft II Hungary site, `status: "Offline — archived
+  on the Wayback Machine"` with `link` pointing at a web.archive.org
+  snapshot instead of a dead URL) rather than app-store/hosting info.
+  Prev/next nav on project pages is scoped to `.CurrentSection.RegularPages` inline in
   `layouts/projects/single.html` rather than calling PaperMod's shared
   `post_nav_links.html` partial — that partial pools every `mainSections`
   entry together, so a project's prev/next would otherwise jump into
@@ -166,12 +173,15 @@ hugo --gc --minify                      # production build into ./public
     (`background: var(--entry)`) stand out consistently on every page,
     not just list pages. Also defines `.content-card`
     (background/border/radius/padding matching PaperMod's `.post-entry`
-    card look) — applied to the `<article class="post-single">` wrapper
-    in `layouts/articles/single.html` and `layouts/projects/single.html`
-    so detail pages are boxed like their list-page cards instead of
-    sitting bare on the page background. `posts` intentionally doesn't
-    get this — its list page already has no boxed-card look either (see
-    Content types above).
+    card look) — wrapped around the header/cover/content/tags in
+    `layouts/articles/single.html` and `layouts/projects/single.html` so
+    detail pages are boxed like their list-page cards instead of sitting
+    bare on the page background. The box wraps a `<div>` **inside**
+    `<article class="post-single">`, not the `<article>` itself — the
+    prev/next nav, share buttons, and comments section come after that
+    div and stay outside the box, sitting directly on the page
+    background. `posts` intentionally doesn't get this — its list page
+    already has no boxed-card look either (see Content types above).
   - `css/extended/profile-posts.css` — styles the homepage recent-posts
     list. PaperMod auto-includes anything under `assets/css/extended/`.
   - `css/extended/posts-list.css` — styles the `/posts/` thumbnail+full-content

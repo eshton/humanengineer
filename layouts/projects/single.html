@@ -1,6 +1,7 @@
 {{- define "main" }}
 
-<article class="post-single content-card">
+<article class="post-single">
+<div class="content-card">
   <header class="post-header">
     {{ partial "breadcrumbs.html" . }}
     <h1 class="post-title entry-hint-parent">
@@ -89,32 +90,34 @@
       <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
     </ul>
-    {{- if (.Param "ShowPostNavLinks") }}
-    {{- /* PaperMod's post_nav_links.html pools every mainSection together
-       (posts, articles, projects), so prev/next here would jump into
-       posts. Scope to just this section instead. */}}
-    {{- $pages := .CurrentSection.RegularPages }}
-    {{- if and (gt (len $pages) 1) (in $pages .) }}
-    <nav class="paginav">
-      {{- with $pages.Next . }}
-      <a class="prev" href="{{ .Permalink }}">
-        <span class="title">« {{ i18n "prev_page" }}</span>
-        <span>{{- .Name -}}</span>
-      </a>
-      {{- end }}
-      {{- with $pages.Prev . }}
-      <a class="next" href="{{ .Permalink }}">
-        <span class="title">{{ i18n "next_page" }} »</span>
-        <span>{{- .Name -}}</span>
-      </a>
-      {{- end }}
-    </nav>
-    {{- end }}
-    {{- end }}
-    {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
-    {{- partial "share_icons.html" . -}}
-    {{- end }}
   </footer>
+</div>
+
+  {{- if (.Param "ShowPostNavLinks") }}
+  {{- /* PaperMod's post_nav_links.html pools every mainSection together
+     (posts, articles, projects), so prev/next here would jump into
+     posts. Scope to just this section instead. */}}
+  {{- $pages := .CurrentSection.RegularPages }}
+  {{- if and (gt (len $pages) 1) (in $pages .) }}
+  <nav class="paginav">
+    {{- with $pages.Next . }}
+    <a class="prev" href="{{ .Permalink }}">
+      <span class="title">« {{ i18n "prev_page" }}</span>
+      <span>{{- .Name -}}</span>
+    </a>
+    {{- end }}
+    {{- with $pages.Prev . }}
+    <a class="next" href="{{ .Permalink }}">
+      <span class="title">{{ i18n "next_page" }} »</span>
+      <span>{{- .Name -}}</span>
+    </a>
+    {{- end }}
+  </nav>
+  {{- end }}
+  {{- end }}
+  {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+  {{- partial "share_icons.html" . -}}
+  {{- end }}
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}

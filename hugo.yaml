@@ -27,7 +27,7 @@ outputs:
 
 params:
   env: production
-  description: "Where Engineering Meets The Individual — notes on software, systems, and the craft, by Agoston Fung."
+  description: "Notes on engineering, AI, and the people writing it — by Agoston Fung."
   author: Agoston Fung
   keywords: ["software engineering", "consulting", "Equal Experts", "Budapest", "blog", "portfolio"]
   mainSections: ["posts", "articles", "projects"]
@@ -46,7 +46,7 @@ params:
   profileMode:
     enabled: true
     title: "Agoston Fung"
-    subtitle: "*Where Engineering Meets The Individual.*<br><br>Engineer in Budapest, 20+ years across startups and enterprises.<br><br>Currently consulting through [Equal Experts](https://www.equalexperts.com/)."
+    subtitle: "*Notes on engineering, AI, and the people writing it.*<br><br>Engineer in Budapest, 20+ years across startups and enterprises.<br><br>Currently consulting through [Equal Experts](https://www.equalexperts.com/)."
     imageUrl: "images/profile.jpg"
     imageTitle: "Agoston Fung"
     imageWidth: 220
@@ -55,7 +55,7 @@ params:
   homeInfoParams:
     Title: "Agoston Fung"
     Content: >
-      *Where Engineering Meets The Individual.*
+      *Notes on engineering, AI, and the people writing it.*
 
 
       I'm Agoston — an engineer based in Budapest with 20+ years in software,
