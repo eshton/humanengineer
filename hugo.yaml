@@ -95,22 +95,26 @@ menu:
       name: Posts
       url: /posts/
       weight: 10
+    - identifier: articles
+      name: Articles
+      url: /articles/
+      weight: 20
     - identifier: projects
       name: Projects
       url: /projects/
-      weight: 20
+      weight: 30
     - identifier: cv
       name: CV
       url: /cv/
-      weight: 30
+      weight: 40
     - identifier: photography
       name: Photography
       url: /photography/
-      weight: 40
+      weight: 50
     - identifier: about
       name: About
       url: /about/
-      weight: 50
+      weight: 60
 
 markup:
   goldmark:
