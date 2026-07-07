@@ -70,7 +70,11 @@ hugo --gc --minify                      # production build into ./public
   `status` values that read as "Publication"/journal name/citation count
   (or, for the defunct StarCraft II Hungary site, `status: "Offline — archived
   on the Wayback Machine"` with `link` pointing at a web.archive.org
-  snapshot instead of a dead URL) rather than app-store/hosting info.
+  snapshot instead of a dead URL) rather than app-store/hosting info. There's
+  also an optional `fullTitle` field (renders as a "Title" row above Type,
+  same `.Param` pattern) — `narcissism-coping-study` uses it to keep the
+  page `title` short (for nav/list-card display) while still showing the
+  paper's actual, much longer published title in the spec table.
   Prev/next nav on project pages is scoped to `.CurrentSection.RegularPages` inline in
   `layouts/projects/single.html` rather than calling PaperMod's shared
   `post_nav_links.html` partial — that partial pools every `mainSections`

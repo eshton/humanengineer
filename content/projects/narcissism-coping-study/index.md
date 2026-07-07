@@ -1,5 +1,6 @@
 ---
-title: "Different Coping Strategies Amongst Individuals With Grandiose and Vulnerable Narcissistic Traits"
+title: "Narcissism and Coping with Stress"
+fullTitle: "Different coping strategies amongst individuals with grandiose and vulnerable narcissistic traits"
 date: 2016-11-15
 draft: false
 projectType: "Publication — research paper (2nd author)"
@@ -17,4 +18,4 @@ While living in London and working full-time, I pursued an interest in psycholog
 
 I'd always liked health psychology, and had an interest in clinical psychology too. Reading Alexander Lowen's [*Narcissism: Denial of the True Self*](https://www.amazon.com/Narcissism-Denial-True-Alexander-Lowen/dp/0743255437), I theorised that if the psychoanalytic frameworks of narcissism actually reflect the real mechanisms behind that personality style, they should predict specific coping behaviours. In my experiment, I found evidence that narcissistic traits are linked to maladaptive coping — specifically, denial.
 
-A year later, [Bruce Fernie](https://www.researchgate.net/profile/Bruce-Fernie) picked up the project and wrote it up properly, with me as second author and my professor, [Ana Nikčević](https://www.kingston.ac.uk/about/staff/professor-ana-nikcevic), as third. It was published in the *Journal of Affective Disorders* and has since picked up 31 citations.
+A year later, [Bruce Fernie](https://www.researchgate.net/profile/Bruce-Fernie) picked up the project and wrote it up properly, with me as second author and my professor, [Ana Nikčević](https://www.kingston.ac.uk/about/staff/professor-ana-nikcevic), as third. It was published in the *Journal of Affective Disorders* and has since picked up 31 citations. My agent told me this is a useful study for clinicians — and why would it lie to me?

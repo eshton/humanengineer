@@ -20,9 +20,15 @@
       {{ .Description }}
     </div>
     {{- end }}
-    {{- if (or (.Param "projectType") (.Param "platform") (.Param "status") (.Param "link")) }}
+    {{- if (or (.Param "fullTitle") (.Param "projectType") (.Param "platform") (.Param "status") (.Param "link")) }}
     <table class="project-specs">
       <tbody>
+        {{- with (.Param "fullTitle") }}
+        <tr>
+          <th>Title</th>
+          <td>{{ . }}</td>
+        </tr>
+        {{- end }}
         {{- with (.Param "projectType") }}
         <tr>
           <th>Type</th>
