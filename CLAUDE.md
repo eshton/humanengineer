@@ -44,10 +44,13 @@ hugo --gc --minify                      # production build into ./public
   this section gets that treatment; keep posts genuinely short or the list
   page gets long. Per-entry meta is just the date (`.entry-date`, placed
   right under the title) — no author/reading-time/word-count footer.
-- **`articles`** — long-form posts. No list override — uses PaperMod's
-  default section list (cover image + summary teaser card, like `posts`
-  used to look). Single-article pages use the default PaperMod
-  `single.html`, same as posts.
+- **`articles`** — long-form posts. `/articles/` uses `layouts/articles/list.html`
+  — bigger cover image (220px) + excerpt + a "Read more" button, instead of
+  the full-content treatment `posts` gets or PaperMod's default teaser card.
+  Styled by `assets/css/extended/articles-list.css`. `layouts/articles/single.html`
+  overrides just the prev/next nav (same cross-section-bleed fix as
+  `projects/single.html`, see below) — everything else matches PaperMod's
+  default single page.
 - **`projects`** — portfolio entries, always page bundles (need a `cover`
   image). `/projects/` is a picture-only grid — cover image, title, date,
   nothing else — via `layouts/projects/list.html`. Single-project pages use
@@ -65,7 +68,18 @@ hugo --gc --minify                      # production build into ./public
   `layouts/projects/single.html` rather than calling PaperMod's shared
   `post_nav_links.html` partial — that partial pools every `mainSections`
   entry together, so a project's prev/next would otherwise jump into
-  `posts`/`articles`.
+  `posts`/`articles`. `layouts/articles/single.html` has the identical fix.
+- Comments (giscus, GitHub Discussions-backed) are enabled on `posts` and
+  `articles` only, via `cascade: comments: true` in
+  `content/posts/_index.md` and `content/articles/_index.md` — not a
+  site-wide `params.comments`, since that would also turn them on for
+  `projects`/`about`/`cv`. `layouts/partials/comments.html` overrides
+  PaperMod's empty stub partial; it injects the giscus `<script>` client-side
+  so it can read the current theme (`html[data-theme]`) and set giscus's
+  initial theme to match, then posts a `setConfig` message to the giscus
+  iframe when the dark-mode toggle is clicked (deferred via `setTimeout` so
+  it reads the theme *after* PaperMod's own toggle handler flips it, since
+  both listeners fire on the same click).
 - All three sections are in `params.mainSections` in `hugo.yaml` (drives
   prev/next nav and what counts as "main content"). Search (`index.json`)
   indexes all `RegularPages` regardless of section, so no change needed
@@ -90,8 +104,9 @@ hugo --gc --minify                      # production build into ./public
   `link`). All ship as `draft: true` until flipped manually.
 - `layouts/partials/` — **theme overrides only**. Anything here shadows the
   matching path under `themes/PaperMod/layouts/`.
-  - `index_profile.html` — overrides PaperMod's homepage profile to append a
-    "Recent posts" list (last 5 from `posts`).
+  - `index_profile.html` — overrides PaperMod's homepage profile to append
+    "Recent posts" and "Recent articles" lists (last 5 each, from `posts`
+    and `articles` respectively).
   - `templates/schema_json.html` — replaces PaperMod's BreadcrumbList logic.
     PaperMod's original assumes `baseURL` has a host and emits stray `""`
     via `$scratch.Add | safeJS` on newer Hugo, which the strict-JSON minifier

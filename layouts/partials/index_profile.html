@@ -80,3 +80,22 @@
     <p class="all-posts"><a href="{{ "/posts/" | relURL }}">All posts &rarr;</a></p>
 </section>
 {{- end }}
+
+{{- /* Recent articles list, shown on the homepage below recent posts. */ -}}
+{{- $recentArticles := first 5 (where site.RegularPages "Section" "articles") }}
+{{- if $recentArticles }}
+<section class="profile-posts">
+    <h2>Recent articles</h2>
+    <ul>
+        {{- range $recentArticles }}
+        <li>
+            <a href="{{ .RelPermalink }}">
+                <span class="title">{{ .Title }}</span>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </a>
+        </li>
+        {{- end }}
+    </ul>
+    <p class="all-posts"><a href="{{ "/articles/" | relURL }}">All articles &rarr;</a></p>
+</section>
+{{- end }}

@@ -1,0 +1,72 @@
+/* Articles list: bigger cover image + excerpt + "Read more" button,
+   instead of the full-content treatment posts get. Scoped to
+   .article-entry so it doesn't affect posts or the homepage. */
+
+.article-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap);
+}
+
+.article-entry-media {
+    flex: 0 0 auto;
+    display: block;
+}
+
+.article-entry-media:empty {
+    display: none;
+}
+
+.article-entry-media .entry-cover {
+    margin-bottom: 0;
+}
+
+.article-entry-media .entry-cover img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.article-entry-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.article-entry-body .entry-date {
+    margin: 4px 0 8px;
+    color: var(--secondary);
+    font-size: 13px;
+}
+
+.article-entry-body .entry-content p {
+    color: var(--content);
+}
+
+.article-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--primary);
+    transition: background 0.15s ease;
+}
+
+.article-read-more:hover {
+    background: var(--tertiary);
+}
+
+@media (max-width: 600px) {
+    .article-entry {
+        flex-direction: column;
+    }
+
+    .article-entry-media .entry-cover img {
+        width: 100%;
+        height: auto;
+        max-height: 260px;
+    }
+}

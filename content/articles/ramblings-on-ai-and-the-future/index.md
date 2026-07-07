@@ -58,6 +58,6 @@ But I also think fundamentals will always matter. Highly specialised knowledge a
 
 So perhaps practicing recursion serves the same purpose.
 
-![Skills, thinking and understanding and judgment, working with AI, more impact](skills-flow.png)
-
 Not because writing recursive functions will remain an essential skill, but because thinking through them keeps my mind sharp. And perhaps that ability to think, understand foundations, and question what the AI is doing will become more important, not less.
+
+![Skills, thinking and understanding and judgment, working with AI, more impact](skills-flow.png)
