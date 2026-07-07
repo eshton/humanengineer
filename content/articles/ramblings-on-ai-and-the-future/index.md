@@ -5,6 +5,9 @@ draft: false
 tags: ["ai", "agentic-engineering", "future-of-work"]
 categories: []
 summary: "On recursion, agentic engineering, and whether practicing fundamentals still matters when AI can do the work for you."
+cover:
+  image: "cover.png"
+  alt: "A developer staring at a recursive function on screen"
 ---
 
 The famous [Five Monkeys experiment](https://en.wikipedia.org/wiki/Five_monkeys_experiment), a psychological fable on social conformity, came to my mind today. I was thinking that I may need to start coding manually again; otherwise, my brain will deteriorate in the age of agentic engineering. Not all the time, but at least sometimes. So maybe I should code some algorithms for fun.
@@ -53,6 +56,8 @@ So should I practice recursion?
 
 Perhaps recursion itself is not important. Perhaps what matters is maintaining the ability to understand what the agent is doing, question its decisions, and work with it on difficult problems.
 
+![Crossroads: fundamentals, experience, judgment, specialization, business skills](crossroads.png)
+
 Given that almost anyone can build apps these days, a lot of things will change. It is not necessarily that people will lose their jobs, but that the landscape will transform.
 
 Business skills will become essential because people will still need to sell to other people. It is widely claimed that soft skills will matter more, but it is not just soft skills. Marketing, sales, and other business skills will matter more too.
@@ -63,7 +68,7 @@ Today, everyone has a supercomputer in their pocket. In the future, everyone may
 
 I think software engineering will not be unique in this transformation.
 
-I had a conversation with a cleaning lady the other day. She was afraid AI would take people's jobs, and with the rise of robots, her job is obviously also in question.
+I had a conversation with a cleaning lady the other day. She was afraid AI would take people's jobs, and with the rise of [robots like Figure's](https://www.figure.ai/), her job is obviously also in question.
 
 But I asked her: what if, in ten years, instead of cleaning these windows herself, she was sitting on her couch with her phone, supervising five to ten robots cleaning different homes?
 
@@ -79,7 +84,7 @@ The software world will be similar.
 
 Not everyone has the ability to fine-tune the JVM so that a service runs in 20 ms instead of 40 ms. As machines approach theoretical limits, the value of optimisation may increase. People who are highly skilled in specific areas will still be needed.
 
-I was listening to a [futurist on a podcast](https://youtu.be/OMAf3YUHQCw?si=zAohyawbf41KrjDY) (in Hungarian) who argued that code writers will not be needed in the future, but that demand will rise for security specialists and people who know how to use AI safely. He also mentioned a woman with a PhD in philosophy who is now an executive at an AI company.
+I was listening to a [futurist on a podcast](https://youtu.be/OMAf3YUHQCw?si=zAohyawbf41KrjDY) (in Hungarian) who argued that code writers will not be needed in the future, but that demand will rise for security specialists and people who know how to use [AI safely](https://genai.owasp.org/). He also mentioned a woman with a PhD in philosophy who is now an executive at an AI company.
 
 The demand will increase, but people will have to adapt.
 
@@ -100,5 +105,7 @@ But I also think fundamentals will always matter. Highly specialised knowledge a
 There is a meme that you never use the maths you learn in school. But mathematics teaches you how to think.
 
 So perhaps practicing recursion serves the same purpose.
+
+![Skills, thinking and understanding and judgment, working with AI, more impact](skills-flow.png)
 
 Not because writing recursive functions will remain an essential skill, but because thinking through them keeps my mind sharp. And perhaps that ability to think, understand foundations, and question what the AI is doing will become more important, not less.
