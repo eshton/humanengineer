@@ -7,7 +7,7 @@ categories: []
 summary: "On recursion, agentic engineering, and whether practicing fundamentals still matters when AI can do the work for you."
 cover:
   image: "cover.png"
-  alt: "A developer staring at a recursive function on screen"
+  alt: "A developer playing a flute to charm a cobra made of code"
 ---
 
 The famous [Five Monkeys experiment](https://en.wikipedia.org/wiki/Five_monkeys_experiment), a psychological fable on social conformity, came to my mind today. I was thinking that I may need to start coding manually again; otherwise, my brain will deteriorate in the age of agentic engineering. Not all the time, but at least sometimes. So maybe I should code some algorithms for fun. I like to write recursive functions. It is very hard, but once it clicks, it works like a charm. It is also impossible to debug, but with the right mindset, you can tame it like a cobra to music.

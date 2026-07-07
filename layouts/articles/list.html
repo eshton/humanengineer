@@ -58,8 +58,9 @@
     </div>
     {{- end }}
     {{- if (ne (.Param "hideSummary") true) }}
+    {{- $paras := findRE "(?s)<p>.*?</p>" .Content 2 }}
     <div class="entry-content">
-      <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}&hellip;{{ end }}</p>
+      {{- range $paras }}{{ . | safeHTML }}{{- end }}
     </div>
     {{- end }}
     <a class="article-read-more" href="{{ .Permalink }}">Read more
