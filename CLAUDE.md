@@ -150,11 +150,13 @@ hugo --gc --minify                      # production build into ./public
     `--main-width` (PaperMod theme var, default 720px) bumped to 900px;
     every content column, the footer, and the homepage recent-posts list
     size off this one variable via `calc()`. `--nav-width` (header bar,
-    1024px) is untouched. Also overrides PaperMod's `.list { background:
-    var(--code-bg) }` (theme-vars.css) — that rule gave list-kind pages
-    (home, section lists, taxonomies) a grey wash distinct from the plain
-    `--theme` white that single pages sit on; overridden to `--theme` so
-    the background is the same everywhere. Also defines `.content-card`
+    1024px) is untouched. Also sets `body { background: var(--code-bg) }`
+    site-wide — PaperMod only washes list-kind pages (home, section
+    lists, taxonomies) with `--code-bg` via its own `.list` rule
+    (theme-vars.css), leaving single pages on plain `--theme`; applying
+    the wash everywhere instead makes `.post-entry`/`.content-card` boxes
+    (`background: var(--entry)`) stand out consistently on every page,
+    not just list pages. Also defines `.content-card`
     (background/border/radius/padding matching PaperMod's `.post-entry`
     card look) — applied to the `<article class="post-single">` wrapper
     in `layouts/articles/single.html` and `layouts/projects/single.html`

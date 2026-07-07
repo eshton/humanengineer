@@ -7,14 +7,14 @@
     --main-width: 900px;
 }
 
-/* PaperMod's theme-vars.css gives list-kind pages (home, section lists,
-   taxonomies) a --code-bg wash via `.list { background: var(--code-bg) }`,
-   distinct from the plain --theme background single pages sit on. That
-   made list pages look visibly greyer than detail pages. Unify to one
-   background everywhere; dark mode already matches (its .list rule uses
-   --theme too), so only light mode needs the override. */
-.list {
-    background: var(--theme);
+/* PaperMod only washes list-kind pages (home, section lists, taxonomies)
+   with --code-bg via `.list { background: var(--code-bg) }`, leaving
+   single pages on plain --theme — so detail pages looked flatter/lighter
+   than list pages. Apply the same wash everywhere instead of just on
+   list pages, so .post-entry/.content-card boxes (background: var(--entry))
+   stand out consistently site-wide. */
+body {
+    background: var(--code-bg);
 }
 
 /* Shared "boxed card" look — the same treatment post-entry list items
