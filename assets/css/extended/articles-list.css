@@ -38,6 +38,12 @@
     font-size: 13px;
 }
 
+.article-entry-body .entry-content {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+}
+
 .article-entry-body .entry-content p {
     color: var(--content);
 }
