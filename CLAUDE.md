@@ -146,12 +146,22 @@ hugo --gc --minify                      # production build into ./public
     retina) via the profile partial. Image resizing **only runs when
     `params.env: production`** (already set in `hugo.yaml`); locally the
     raw image is served.
-  - `css/extended/layout.css` — site-wide layout overrides. Currently just
-    bumps `--main-width` (PaperMod theme var, default 720px) to 900px;
+  - `css/extended/layout.css` — site-wide layout overrides:
+    `--main-width` (PaperMod theme var, default 720px) bumped to 900px;
     every content column, the footer, and the homepage recent-posts list
-    size off this one variable via `calc()`, so it's a single-line change
-    rather than per-page CSS. `--nav-width` (header bar, 1024px) is
-    untouched.
+    size off this one variable via `calc()`. `--nav-width` (header bar,
+    1024px) is untouched. Also overrides PaperMod's `.list { background:
+    var(--code-bg) }` (theme-vars.css) — that rule gave list-kind pages
+    (home, section lists, taxonomies) a grey wash distinct from the plain
+    `--theme` white that single pages sit on; overridden to `--theme` so
+    the background is the same everywhere. Also defines `.content-card`
+    (background/border/radius/padding matching PaperMod's `.post-entry`
+    card look) — applied to the `<article class="post-single">` wrapper
+    in `layouts/articles/single.html` and `layouts/projects/single.html`
+    so detail pages are boxed like their list-page cards instead of
+    sitting bare on the page background. `posts` intentionally doesn't
+    get this — its list page already has no boxed-card look either (see
+    Content types above).
   - `css/extended/profile-posts.css` — styles the homepage recent-posts
     list. PaperMod auto-includes anything under `assets/css/extended/`.
   - `css/extended/posts-list.css` — styles the `/posts/` thumbnail+full-content
@@ -173,9 +183,17 @@ hugo --gc --minify                      # production build into ./public
   Artist/Copyright on download). Consumed by the `photo` shortcode above.
   Not every photo has an entry yet; fields simply don't render when
   absent.
-- `static/` — favicons (`favicon.ico`, `favicon.svg`, PNGs, apple-touch,
-  safari-pinned-tab), `_headers` (Cloudflare Pages cache-control rules).
-  Copied to site root verbatim.
+- `static/` — favicons, `_headers` (Cloudflare Pages cache-control rules).
+  Copied to site root verbatim. `favicon.ico`/`favicon-16x16.png`/
+  `favicon-32x32.png`/`apple-touch-icon.png` are raster bakes of the 🤖
+  emoji (rendered locally via Pillow + `/System/Library/Fonts/Apple Color
+  Emoji.ttc`, since that font only has fixed bitmap strike sizes — 20, 32,
+  40, 48, 64, 96, 160pt — arbitrary sizes throw "invalid pixel size").
+  `favicon.svg` is a scalable `<text>🤖</text>` SVG instead of vector art,
+  so real browsers render the OS's native emoji glyph (Apple Color Emoji
+  on Apple platforms, Noto elsewhere) rather than a baked-in bitmap.
+  `safari-pinned-tab.svg` is unrelated — Safari's pinned-tab mask icon
+  must stay a monochrome silhouette, so it wasn't changed.
 - `scripts/cf-pages-build.sh` — the actual Cloudflare Pages build command
   (see Hosting above). Edit this, not the dashboard, when the baseURL logic
   needs to change.

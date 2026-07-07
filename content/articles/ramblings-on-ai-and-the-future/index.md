@@ -48,7 +48,7 @@ Not everyone has the ability to fine-tune the JVM so that a service runs in 20 m
 
 The demand will increase, but people will have to adapt. Society has shown over the last 30 years how quickly it can adapt. Thirty years ago, if you had a mobile phone, people thought you were a businessman because only businesspeople could afford one. Thirty years later, my phone records 4K video at 60 fps.
 
-Did photography die because everyone now has a camera in their pocket? No. The landscape changed.
+Did photography die because everyone now has a camera in their pocket? No. The landscape changed. (Btw, did you see [my pictures](/photography/)?)
 
 That brings me back to the starting question: should I practice recursion? Or is recursion a skill I will not need in the future, like knowing how a combustion engine works?
 
