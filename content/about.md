@@ -23,6 +23,15 @@ and teams that ship. This site is where I think out loud about that work.
 - **Education:** Kingston University, London (Distinction)
 - **Languages:** Hungarian (native), English (professional)
 
+## Education
+
+- **MSc Psychology (Distinction), Kingston University, UK** — 2013.
+  Pursued my interest in the topic while working part-time. Dissertation:
+  *Personality and coping with stress*.
+- **MSc Computer Science, BME, HU** — 2003–2009. Interest in web
+  development; started working full time after my second year.
+  Dissertation: *Prototype of a collaboration system for government use*.
+
 ## Elsewhere
 
 - [LinkedIn](https://www.linkedin.com/in/agostonfung/)

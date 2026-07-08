@@ -4,15 +4,16 @@
     max-width: 100%;
 }
 
-.cv-header {
+.cv-main h2 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.cv-experience-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-}
-
-.cv-header h1 {
-    margin: 0;
 }
 
 .cv-download-icon {
@@ -37,31 +38,26 @@
     height: 1.2rem;
 }
 
-.cv-contact {
-    text-align: right;
-    color: var(--secondary);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 1rem;
-    margin: 0.8rem 0 1.2rem;
-}
-
-.cv-summary {
-    color: var(--content);
-}
-
-.cv-main h2 {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.3rem;
-}
-
 .cv-entry {
     margin-bottom: 1.3rem;
 }
 
 .cv-entry h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 0.15rem;
+}
+
+.cv-logo {
+    flex: 0 0 auto;
+    width: 1.4rem;
+    height: 1.4rem;
+    object-fit: contain;
+    border-radius: 4px;
+    background: #fff;
+    padding: 2px;
+    border: 1px solid var(--border);
 }
 
 .cv-entry .cv-dates {

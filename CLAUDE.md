@@ -121,14 +121,21 @@ is preinstalled).
     isn't a resume anymore — it's a full reverse-chronological work history
     (every employer from thyssenkrupp Presta in 2005 onward, including
     overlapping consultancy/client pairs like Equal Experts + bp/EY), each
-    with a `.cv-entry` (title, dates/contract-type/location, a short story,
-    optional `.cv-tags` tech pills) plus an Education section, still with
-    the CV PDF download icon in the header. Styled by
-    `assets/css/extended/cv.css`. There's no skills sidebar anymore (it was
-    a two-column grid before — removed along with `.cv-body`'s grid so the
-    page is single-column now). A couple of entries link inline to related
-    `projects/` pages (`skyscanner-multi-city`, `symfony-article`) instead
-    of repeating that content.
+    with a `.cv-entry` (a small company-logo `<img class="cv-logo">` inline
+    in the `<h3>`, title, dates/contract-type/location, a short story,
+    optional `.cv-tags` tech pills). Styled by `assets/css/extended/cv.css`.
+    There's no name/contact/summary header or skills sidebar anymore —
+    education moved to `about.md`'s own Education section, and the CV PDF
+    download icon now sits inline in the "Experience" `<h2>` itself
+    (`.cv-experience-heading`) rather than a separate page header. A couple
+    of entries link inline to related `projects/` pages
+    (`skyscanner-multi-city`, `symfony-article`) instead of repeating that
+    content. Company logos live in `static/logos/<slug>.png` — small
+    (16–32px) favicons fetched from Google's public favicon service
+    (`google.com/s2/favicons?sz=N&domain=...`), not official brand assets;
+    `creativity-software` (now part of SS8) has no entry since Google
+    doesn't index a favicon for that domain and the fallback is a generic
+    globe icon, not a real logo — omit the `<img>` rather than show that.
   - `posts/` — short posts, see Content types above. Mix of single
     `<slug>.md` files and **page bundles** (`<slug>/index.md` +
     `cover.jpeg`). Use a bundle when the post has a cover image or other
