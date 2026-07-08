@@ -116,6 +116,19 @@ is preinstalled).
 
 - `content/`
   - `about.md` — top-level page
+  - `cv.md` — the "Experience" nav page (`hugo.yaml` menu label; URL stays
+    `/cv/` to avoid breaking existing links). Despite the filename this
+    isn't a resume anymore — it's a full reverse-chronological work history
+    (every employer from thyssenkrupp Presta in 2005 onward, including
+    overlapping consultancy/client pairs like Equal Experts + bp/EY), each
+    with a `.cv-entry` (title, dates/contract-type/location, a short story,
+    optional `.cv-tags` tech pills) plus an Education section, still with
+    the CV PDF download icon in the header. Styled by
+    `assets/css/extended/cv.css`. There's no skills sidebar anymore (it was
+    a two-column grid before — removed along with `.cv-body`'s grid so the
+    page is single-column now). A couple of entries link inline to related
+    `projects/` pages (`skyscanner-multi-city`, `symfony-article`) instead
+    of repeating that content.
   - `posts/` — short posts, see Content types above. Mix of single
     `<slug>.md` files and **page bundles** (`<slug>/index.md` +
     `cover.jpeg`). Use a bundle when the post has a cover image or other

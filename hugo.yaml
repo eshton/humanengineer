@@ -104,7 +104,7 @@ menu:
       url: /projects/
       weight: 30
     - identifier: cv
-      name: CV
+      name: Experience
       url: /cv/
       weight: 40
     - identifier: photography
