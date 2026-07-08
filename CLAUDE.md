@@ -154,6 +154,19 @@ is preinstalled).
     **Only handles the simple `[section, current]` case.** If the site grows
     deeper hierarchies, extend it. If PaperMod is updated, diff their
     `schema_json.html` against this file.
+  - `templates/opengraph.html` + `templates/twitter_cards.html` — override
+    PaperMod's social-share image logic (both delegate to
+    `partials/og-image.html`). PaperMod resolved a bundle cover filename like
+    `cover.jpeg` against the **site root** (→ 404) unless the page set
+    `cover.relative: true`, and emitted **no** image at all for coverless
+    pages (home, about, cv, section lists, taxonomies) — so Facebook/Messenger
+    shares fell back to the favicon. `og-image.html` resolves the cover as a
+    real image resource (page bundle or global, mirroring `cover.html`),
+    resizes it to 1200px wide in production, and falls back to the profile
+    photo — guaranteeing exactly one valid absolute `og:image`/`twitter:image`
+    per page (verified: every generated HTML page has one). The rest of both
+    files is copied verbatim from PaperMod; diff on theme updates like
+    `schema_json.html`.
   - `header.html` — replaces PaperMod's search-as-a-page nav link with a
     magnifier icon that expands into an input + results dropdown
     (`.nav-search`, wired up by `assets/js/nav-search.js`). There is no

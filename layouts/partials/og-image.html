@@ -1,0 +1,45 @@
+{{- /* Resolve ONE absolute social-share image for any page, returning a
+   dict: { url, width, height } (width/height are 0 when the image isn't a
+   processable resource). Used by templates/opengraph.html and
+   templates/twitter_cards.html so Facebook/Messenger, LinkedIn, etc. always
+   have a valid image and never fall back to the favicon.
+
+   Resolution order:
+     1. The page's own cover, resolved as a page-bundle or global image
+        resource — mirrors themes/PaperMod cover.html, so the share image
+        matches the visible cover. This works regardless of the
+        `cover.relative` flag (PaperMod's own opengraph.html resolved a bare
+        "cover.jpeg" against the site root → 404 unless relative:true was set).
+     2. A cover.image that isn't a resource (external/static URL): used as-is.
+     3. Fallback: the site profile photo — also the homepage image and the
+        image for coverless posts, list pages, about/cv, taxonomies, etc.
+
+   Resizing (production only, like index_profile.html) caps the long edge at
+   1200px so we don't hand social scrapers a multi-MB original. */ -}}
+{{- $res := "" -}}
+{{- $url := "" -}}
+{{- with .Params.cover.image -}}
+  {{- $pb := ($.Resources.ByType "image").GetMatch (printf "*%s*" .) -}}
+  {{- $gr := (resources.ByType "image").GetMatch (printf "*%s*" .) -}}
+  {{- $res = (or $pb $gr) -}}
+  {{- if not $res -}}
+    {{- $url = (. | absURL) -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (not $res) (not $url) -}}
+  {{- $res = (resources.Get "images/profile.jpg") -}}
+{{- end -}}
+{{- $w := 0 -}}
+{{- $h := 0 -}}
+{{- with $res -}}
+  {{- $out := . -}}
+  {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) -}}
+  {{- $processable := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+  {{- if and $prod (in $processable .MediaType.SubType) (gt .Width 1200) -}}
+    {{- $out = (.Resize "1200x") -}}
+  {{- end -}}
+  {{- $url = $out.Permalink -}}
+  {{- $w = $out.Width -}}
+  {{- $h = $out.Height -}}
+{{- end -}}
+{{- return (dict "url" $url "width" $w "height" $h) -}}
