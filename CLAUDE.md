@@ -124,11 +124,12 @@ is preinstalled).
     with a `.cv-entry` (a small company-logo `<img class="cv-logo">` inline
     in the `<h3>`, title, dates/contract-type/location, a short story,
     optional `.cv-tags` tech pills). Styled by `assets/css/extended/cv.css`.
-    There's no name/contact/summary header or skills sidebar anymore —
-    education moved to `about.md`'s own Education section, and the CV PDF
-    download icon now sits inline in the "Experience" `<h2>` itself
-    (`.cv-experience-heading`) rather than a separate page header. A couple
-    of entries link inline to related `projects/` pages
+    There's no name/contact/summary header, skills sidebar, or "Experience"
+    `<h2>` anymore — the page's own title (from front matter) is the only
+    heading. Education moved to `about.md`'s own Education section. The CV
+    is no longer downloadable as a PDF — `static/files/agoston-fung-cv.pdf`
+    and the download icon/button were both removed. A couple of entries
+    link inline to related `projects/` pages
     (`skyscanner-multi-city`, `symfony-article`) instead of repeating that
     content. Company logos live in `static/logos/<slug>.png` — small
     (16–32px) favicons fetched from Google's public favicon service

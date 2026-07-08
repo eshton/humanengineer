@@ -14,13 +14,6 @@ ShowWordCount: false
 
 <div class="cv-main">
 
-<h2 class="cv-experience-heading">
-  Experience
-  <a class="cv-download-icon" href="/files/agoston-fung-cv.pdf" download aria-label="Download CV (PDF)" title="Download CV (PDF)">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-  </a>
-</h2>
-
 <div class="cv-entry">
   <h3><img class="cv-logo" src="/logos/ancestralize.png" alt="" loading="lazy">LLM Agent Whisperer &mdash; AI/ML Full Stack Engineer &mdash; Ancestralize</h3>
   <span class="cv-dates">May 2026 &ndash; present &middot; Contract &middot; Budapest, Hybrid</span>

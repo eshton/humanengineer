@@ -9,35 +9,6 @@
     padding-bottom: 0.3rem;
 }
 
-.cv-experience-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.cv-download-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 50%;
-    background: var(--tertiary);
-    color: var(--primary);
-    transition: opacity 0.15s ease;
-}
-
-.cv-download-icon:hover {
-    opacity: 0.7;
-}
-
-.cv-download-icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
-}
-
 .cv-entry {
     margin-bottom: 1.3rem;
 }
