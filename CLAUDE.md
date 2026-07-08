@@ -35,6 +35,22 @@ hugo new content projects/<slug>/index.md  # new draft project (page bundle)
 hugo --gc --minify                      # production build into ./public
 ```
 
+No `hugo` on PATH (e.g. Claude Code on the web)? Build it from source via
+the Go module proxy — **non-extended is fine** despite the Stack note:
+```bash
+GOBIN=$PWD/.bin go install github.com/gohugoio/hugo@v0.152.2   # ~1 min
+.bin/hugo --gc --minify --baseURL "https://agostonfung.com"    # ~12s
+```
+The only extended-gated path (`index_profile.html` appends `webp` to
+processable formats `if hugo.IsExtended`) is never hit — `profile.jpg` is a
+JPEG and ordinary `.Resize`/`.Fill` work in non-extended Hugo too. Don't try
+to `curl` a release binary in the web env: `github.com` downloads are blocked
+by the egress proxy (you get a JSON "access not enabled" message, not a
+tarball). `proxy.golang.org`, `pypi.org`, npm, and crates **are** allow-listed
+— install via package managers, not GitHub releases (`pip install Pillow`
+works if you need to resize images locally, since neither it nor ImageMagick
+is preinstalled).
+
 ## Content types
 
 - **`posts`** — short-form posts (mostly ported LinkedIn updates). The
@@ -267,3 +283,20 @@ hugo --gc --minify                      # production build into ./public
 - Cloudflare Pages build settings (build command, output dir, env vars) live
   in the dashboard, not in a repo file — if you rename/move
   `scripts/cf-pages-build.sh`, update the dashboard's build command too.
+- **Inline body images are NOT run through Hugo's image pipeline** — only
+  covers and the profile image are. A markdown `![](file.jpg)` or raw
+  `<img src="file.jpg">` in a page body serves the original file as-is, so
+  **downscale before committing** (~1600px long edge). Covers, by contrast,
+  get a responsive `srcset` generated at build, so a multi-MB `cover.*`
+  original in the repo is fine (several projects already ship 3–4 MB covers).
+  Body-image files still need to live in the page bundle; the relative `src`
+  resolves to `/<section>/<slug>/<file>`. Example: the photo gallery in
+  `content/projects/eznekemkinai/index.md` + `assets/css/extended/post-gallery.css`.
+- Raw HTML in markdown works (`goldmark` has `unsafe: true`), but keep **no
+  blank lines inside a block-level element** (`<div>…</div>`): goldmark ends
+  the HTML block at the first blank line and parses the remainder as markdown.
+  Put each child on its own line with no gaps.
+- When verifying a build by grepping `public/`, remember the **minifier strips
+  attribute quotes** (`href=https://…`, `src=foo.jpg`, `loading=lazy`). A
+  pattern like `href="…"` will silently match nothing — write quote-agnostic
+  patterns.
