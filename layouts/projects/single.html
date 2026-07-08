@@ -130,4 +130,74 @@
   {{- end }}
 </article>
 
+{{- /* Click-to-expand lightbox for any inline .post-gallery in the body.
+   Reuses the global .lightbox / .lightbox-nav styles from photography.css
+   (a single shared overlay, like posts/list.html's thumbnail lightbox),
+   minus the sidebar. Only emitted when the rendered content has a gallery. */ -}}
+{{- if strings.Contains .Content "post-gallery" }}
+<div id="gallery-lightbox" class="lightbox gallery-lightbox" data-gallery-lightbox aria-hidden="true">
+  <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close"></button>
+  <div class="lightbox-stage">
+    <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous photo">&#8249;</button>
+    <img class="gallery-lightbox-img" data-lightbox-img alt="">
+    <figcaption class="lightbox-caption" data-lightbox-caption></figcaption>
+    <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next photo">&#8250;</button>
+  </div>
+</div>
+<script>
+(function () {
+  var figures = Array.prototype.slice.call(
+    document.querySelectorAll('.post-gallery figure'));
+  if (!figures.length) return;
+
+  var photos = figures.map(function (fig) {
+    var img = fig.querySelector('img');
+    var cap = fig.querySelector('figcaption');
+    return {
+      src: img.getAttribute('src'),
+      alt: img.getAttribute('alt') || '',
+      caption: cap ? cap.textContent : '',
+    };
+  });
+
+  var box = document.getElementById('gallery-lightbox');
+  var boxImg = box.querySelector('[data-lightbox-img]');
+  var boxCap = box.querySelector('[data-lightbox-caption]');
+  var current = 0;
+
+  function render() {
+    var p = photos[current];
+    boxImg.setAttribute('src', p.src);
+    boxImg.setAttribute('alt', p.alt);
+    boxCap.textContent = p.caption;
+    boxCap.hidden = !p.caption;
+  }
+  function open(i) { current = i; render(); box.classList.add('is-open'); box.setAttribute('aria-hidden', 'false'); }
+  function close() { box.classList.remove('is-open'); box.setAttribute('aria-hidden', 'true'); }
+  function step(d) { current = (current + d + photos.length) % photos.length; render(); }
+
+  figures.forEach(function (fig, i) {
+    fig.setAttribute('role', 'button');
+    fig.setAttribute('tabindex', '0');
+    fig.addEventListener('click', function () { open(i); });
+    fig.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+    });
+  });
+
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target.hasAttribute('data-lightbox-close')) close();
+  });
+  box.querySelector('[data-lightbox-prev]').addEventListener('click', function () { step(-1); });
+  box.querySelector('[data-lightbox-next]').addEventListener('click', function () { step(1); });
+  document.addEventListener('keydown', function (e) {
+    if (!box.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+</script>
+{{- end }}
+
 {{- end }}{{/* end main */}}

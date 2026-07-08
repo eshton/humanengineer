@@ -21,6 +21,52 @@
   border-radius: var(--radius, 8px);
 }
 
+/* Click-to-expand affordance. The lightbox itself is wired up in
+   layouts/projects/single.html and reuses the .lightbox styles from
+   photography.css. */
+.post-gallery figure {
+  cursor: zoom-in;
+}
+
+.post-gallery figure img {
+  transition: opacity 0.15s ease;
+}
+
+.post-gallery figure:hover img,
+.post-gallery figure:focus-visible img {
+  opacity: 0.85;
+}
+
+.post-gallery figure:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Sidebar-free variant of the shared lightbox: a centred image with its
+   caption stacked underneath, prev/next arrows overlaid on the stage. */
+.gallery-lightbox .lightbox-stage {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.gallery-lightbox-img {
+  max-width: 100%;
+  max-height: calc(100vh - 6rem);
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-lightbox .lightbox-caption {
+  max-width: 70ch;
+  margin: 0;
+  color: #ddd;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .post-gallery figcaption {
   margin-top: 0.4rem;
   font-size: 0.8rem;
