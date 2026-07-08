@@ -25,7 +25,7 @@ ShowWordCount: false
 
 <div class="cv-entry">
   <h3><img class="cv-logo" src="/logos/rxclarity.png" alt="" loading="lazy">Co-Founder / CTO &mdash; RxClarity</h3>
-  <span class="cv-dates">Aug 2025 &ndash; Apr 2026 &middot; Full-time &middot; London, Remote</span>
+  <span class="cv-dates">Sep 2025 &ndash; Mar 2026 &middot; Full-time &middot; London, Remote</span>
   <p>Took a career break to build a pharmaceutical analytics platform that
   combines healthcare data into a highly linked database, accessible through
   a conversational AI assistant and a web dashboard.</p>

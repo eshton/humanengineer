@@ -1,10 +1,10 @@
 ---
 title: "RxClarity"
-date: 2026-07-02
+date: 2025-09-01
 draft: false
 projectType: "Pharma intelligence platform"
 platform: "Web, embedded in Salesforce, Copilot, Power BI, ChatGPT"
-status: "Early access (pilot program)"
+status: "Sep 2025 – Mar 2026 · Stepped down as CTO"
 link: "https://rxclarity.io"
 tags: ["pharma", "ai-search", "analytics", "saas"]
 summary: "Unified pharma intelligence: AI search plus a predictive trigger engine over companies, drugs, and clinical trials, delivered inside the tools teams already use."
@@ -33,5 +33,6 @@ drugs, 6,000+ brand names, and 120,000+ active clinical trials.
   portfolios, compare risk scores and pipeline impact, all without
   leaving existing workflows.
 
-Currently running an early-access pilot program with discounted beta
-pricing, dedicated onboarding, and priority access to new alerts.
+Ran an early-access pilot program with discounted beta pricing,
+dedicated onboarding, and priority access to new alerts. I stepped
+down as CTO in March 2026.
