@@ -64,13 +64,13 @@ hugo --gc --minify                      # production build into ./public
   permalink, respectively) — that's why the fields are named `projectType`
   and `link` instead of the more obvious `type`/`url`. Don't rename them back
   without checking Hugo's reserved front-matter list first. The same four
-  fields double up for non-software entries — three publications
-  (`symfony-article`, `narcissism-coping-study`, and the `starcraft2-hungary`
-  fan site) live in `projects` too, just with `projectType`/`platform`/
-  `status` values that read as "Publication"/journal name/citation count
-  (or, for the defunct StarCraft II Hungary site, `status: "Offline — archived
-  on the Wayback Machine"` with `link` pointing at a web.archive.org
-  snapshot instead of a dead URL) rather than app-store/hosting info. There's
+  fields double up for non-software entries — two publications
+  (`symfony-article`, `narcissism-coping-study`) and two defunct personal
+  projects (`starcraft2-hungary`, `cupapp`) live in `projects` too, just
+  with `projectType`/`platform`/`status` values that read as "Publication"/
+  journal name/citation count, or, for the two dead sites,
+  `status: "Offline — archived on the Wayback Machine"` with `link`
+  pointing at a web.archive.org snapshot instead of a dead URL. There's
   also an optional `fullTitle` field (renders as a "Title" row above Type,
   same `.Param` pattern) — `narcissism-coping-study` uses it to keep the
   page `title` short (for nav/list-card display) while still showing the
