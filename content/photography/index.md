@@ -58,6 +58,12 @@ between photos.
 
 {{% photo file="china-city-park-dusk.jpg" location="China" alt="Skyscraper reflected in a park lake at dusk, China" %}}{{% /photo %}}
 
+{{% photo file="ngong-ping-cable-car-hong-kong.jpg" location="Ngong Ping 360, Hong Kong" alt="Cable car over Lantau Island and Hong Kong International Airport" %}}{{% /photo %}}
+
+{{% photo file="hong-kong-night.jpg" location="Victoria Peak, Hong Kong" alt="Hong Kong skyline at night from Victoria Peak" %}}{{% /photo %}}
+
+{{% photo file="tianmen-mountain-china.jpg" location="Tianmen Mountain, China" alt="The 999 steps up to Heaven's Gate, Tianmen Mountain, China" %}}{{% /photo %}}
+
 </div>
 
 {{% photo-lightbox %}}
