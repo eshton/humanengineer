@@ -51,6 +51,3 @@ beta for hosting customers:
 The Webfészek site runs this way itself: you can open it in your own AI
 assistant and have it read the whole offer, answer anything, or start an
 enquiry.
-
-Webfészek is run by [Armin & Felix Kft](https://arminfelix.com), from
-Budapest.
