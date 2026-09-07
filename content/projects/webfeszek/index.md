@@ -1,6 +1,6 @@
 ---
 title: "Webfészek"
-date: 2026-01-15
+date: 2026-09-01
 draft: false
 projectType: "Managed website service for small businesses"
 platform: "Astro static site · global CDN · AI-assisted builds"
