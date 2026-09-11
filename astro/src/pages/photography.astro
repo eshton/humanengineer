@@ -1,0 +1,117 @@
+---
+import Layout from "@layouts/Layout.astro";
+import photos from "../data/photos.json";
+---
+
+<Layout
+  title="Photography"
+  description="A few photos from travels over the years, alongside the engineering."
+>
+  <div class="hd-wrap" data-pagefind-ignore>
+    <h1
+      class="animate font-display mb-3 text-4xl font-bold tracking-tight text-black dark:text-white"
+    >
+      Photography
+    </h1>
+    <p class="ph-intro animate">
+      A few photos from travels over the years, alongside the engineering. All
+      shot on trips around Europe and Asia; a wider set is up on <a
+        href="https://www.pexels.com/hu-hu/@agoston-fung-1165130/"
+        target="_blank"
+        rel="noopener">Pexels</a
+      >. Click a photo to view it full screen; use the arrows or the &larr; /
+      &rarr; keys to move between photos.
+    </p>
+
+    <div class="ph-grid animate">
+      {
+        photos.map((p, i) => (
+          <button
+            class="ph-item"
+            data-index={i}
+            aria-label={`Open photo: ${p.location}`}
+          >
+            <img src={`/photography/${p.file}`} alt={p.alt} loading="lazy" />
+            <span class="ph-cap">{p.location}</span>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="ph-lightbox" class="ph-lightbox" hidden>
+    <button class="ph-backdrop" aria-label="Close"></button>
+    <button class="ph-nav ph-prev" aria-label="Previous">&#8249;</button>
+    <div class="ph-stage">
+      <img id="ph-lb-img" src="" alt="" />
+      <aside class="ph-details">
+        <p id="ph-lb-loc" class="ph-loc"></p>
+        <dl id="ph-lb-exif" class="ph-exif"></dl>
+      </aside>
+    </div>
+    <button class="ph-nav ph-next" aria-label="Next">&#8250;</button>
+    <button class="ph-close" aria-label="Close">&times;</button>
+  </div>
+
+  <script is:inline define:vars={{ photos }}>
+    (function () {
+      const lb = document.getElementById("ph-lightbox");
+      if (!lb) return;
+      const img = document.getElementById("ph-lb-img");
+      const loc = document.getElementById("ph-lb-loc");
+      const exif = document.getElementById("ph-lb-exif");
+      let idx = 0;
+
+      const FIELDS = [
+        ["camera", "Camera"],
+        ["focalLength", "Focal length"],
+        ["aperture", "Aperture"],
+        ["iso", "ISO"],
+        ["shutterSpeed", "Shutter"],
+        ["dateTaken", "Taken"],
+      ];
+
+      function show(i) {
+        idx = (i + photos.length) % photos.length;
+        const p = photos[idx];
+        img.src = `/photography/${p.file}`;
+        img.alt = p.alt;
+        loc.textContent = p.location;
+        exif.innerHTML = "";
+        for (const [key, label] of FIELDS) {
+          if (!p[key]) continue;
+          const dt = document.createElement("dt");
+          dt.textContent = label;
+          const dd = document.createElement("dd");
+          dd.textContent = p[key];
+          exif.append(dt, dd);
+        }
+        exif.hidden = !exif.childElementCount;
+      }
+      function open(i) {
+        show(i);
+        lb.hidden = false;
+        document.body.style.overflow = "hidden";
+      }
+      function close() {
+        lb.hidden = true;
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll(".ph-item").forEach((el) => {
+        el.addEventListener("click", () => open(Number(el.dataset.index)));
+      });
+      lb.querySelector(".ph-prev").addEventListener("click", () => show(idx - 1));
+      lb.querySelector(".ph-next").addEventListener("click", () => show(idx + 1));
+      lb.querySelector(".ph-close").addEventListener("click", close);
+      lb.querySelector(".ph-backdrop").addEventListener("click", close);
+      document.addEventListener("keydown", (e) => {
+        if (lb.hidden) return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowLeft") show(idx - 1);
+        if (e.key === "ArrowRight") show(idx + 1);
+      });
+    })();
+  </script>
+</Layout>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import CoverCard from "@components/CoverCard.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  const articles = await getCollection("articles", ({ data }) => !data.draft);
+  const entries = [
+    ...posts.map((e) => ({ e, kind: "Post" })),
+    ...articles.map((e) => ({ e, kind: "Article" })),
+  ];
+  const tags = [...new Set(entries.flatMap((x) => x.e.data.tags || []))];
+  return tags.map((tag) => ({
+    params: { id: tag },
+    props: {
+      entries: entries
+        .filter((x) => x.e.data.tags?.includes(tag))
+        .sort((a, b) => b.e.data.date.valueOf() - a.e.data.date.valueOf()),
+    },
+  }));
+}
+
+const { id } = Astro.params;
+const { entries } = Astro.props as {
+  entries: { e: any; kind: string }[];
+};
+---
+
+<Layout title={`Tag: ${id}`} description={`Everything tagged ${id}.`}>
+  <div class="hd-wrap" data-pagefind-ignore>
+    <div class="animate mb-8">
+      <BackToPrevious href="/tags">All tags</BackToPrevious>
+    </div>
+    <div class="hd-shead animate">
+      <h2><span class="bar-i"></span>Tagged &ldquo;{id}&rdquo;</h2>
+    </div>
+    <div class="hd-grid animate">
+      {entries.map((x) => <CoverCard entry={x.e} kind={x.kind} />)}
+    </div>
+  </div>
+</Layout>

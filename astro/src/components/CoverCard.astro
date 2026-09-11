@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import { categoryOf } from "@lib/category";
+import type { CollectionEntry } from "astro:content";
+
+type Entry =
+  | CollectionEntry<"posts">
+  | CollectionEntry<"articles">
+  | CollectionEntry<"projects">;
+const { entry, kind } = Astro.props as { entry: Entry; kind: string };
+
+const cat = categoryOf(entry.data);
+const href = `/${entry.collection}/${entry.id}`;
+const meta = entry.data.date.toLocaleDateString("en-US", {
+  month: "short",
+  year: "numeric",
+});
+const label =
+  entry.collection === "projects"
+    ? ((entry.data as any).projectType ?? "Project")
+    : cat.label;
+---
+
+<a href={href} class={`hd-card cg-${cat.key}`}>
+  <div class="cv">
+    {
+      entry.data.cover && (
+        <Image
+          src={entry.data.cover.image}
+          alt={entry.data.cover.alt ?? entry.data.title}
+          width={640}
+          height={264}
+        />
+      )
+    }
+    <span class="hd-badge">{kind}</span>
+  </div>
+  <div class="in">
+    <h3>{entry.data.title}</h3>
+    <div class="m"><span>{meta}</span><span>&middot;</span><span>{label}</span></div>
+  </div>
+</a>

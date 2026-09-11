@@ -1,0 +1,84 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import { siblings } from "@lib/nav";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import PostNavigation from "@components/PostNavigation.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+import Giscus from "@components/Giscus.astro";
+
+export async function getStaticPaths() {
+  const articles = (await getCollection("articles"))
+    .filter((e) => !e.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return articles.map((entry) => ({ params: { id: entry.id }, props: entry }));
+}
+type Props = CollectionEntry<"articles">;
+
+const articles = (await getCollection("articles"))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const { prev, next } = siblings(articles, Astro.params.id!);
+
+const post = Astro.props;
+const { Content, headings } = await render(post);
+const desc = post.data.summary ?? post.data.description ?? "";
+---
+
+<Layout title={post.data.title} description={desc}>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/articles">Back to articles</BackToPrevious>
+    </div>
+    <div class="my-10 space-y-3">
+      <div class="animate flex items-center gap-1.5 text-sm">
+        <FormattedDate date={post.data.date} />
+        &bull;
+        {post.body && <span>{readingTime(post.body)}</span>}
+      </div>
+      <h1 class="animate font-display text-4xl font-bold tracking-tight text-black dark:text-white">
+        {post.data.title}
+      </h1>
+      {
+        post.data.tags && post.data.tags.length > 0 && (
+          <div class="animate flex flex-wrap gap-2 pt-1">
+            {post.data.tags.map((tag) => (
+              <a
+                href={`/tags/${tag}`}
+                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    {
+      post.data.cover && (
+        <div class="animate mb-10 overflow-hidden rounded-xl">
+          <Image
+            src={post.data.cover.image}
+            alt={post.data.cover.alt ?? post.data.title}
+            width={1600}
+            height={840}
+          />
+        </div>
+      )
+    }
+    {headings.length > 0 && <TableOfContents headings={headings} />}
+    <article class="animate">
+      <Content />
+      <div class="mt-24">
+        <PostNavigation prevPost={prev} nextPost={next} />
+      </div>
+      <div class="mt-24">
+        <Giscus />
+      </div>
+    </article>
+  </Container>
+</Layout>

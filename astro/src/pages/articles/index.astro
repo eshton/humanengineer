@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import CoverCard from "@components/CoverCard.astro";
+import { ARTICLES } from "@consts";
+
+const articles = (await getCollection("articles"))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title={ARTICLES.TITLE} description={ARTICLES.DESCRIPTION}>
+  <div class="hd-wrap" data-pagefind-ignore>
+    <div class="hd-shead animate">
+      <h2><span class="bar-i"></span>Articles</h2>
+    </div>
+    <div class="hd-grid animate">
+      {articles.map((e) => <CoverCard entry={e} kind="Article" />)}
+    </div>
+  </div>
+</Layout>
