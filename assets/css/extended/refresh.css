@@ -1,0 +1,110 @@
+/* ---------------------------------------------------------------------------
+   Site visual refresh — a light restyle on top of PaperMod.
+
+   Brings the identity from the article covers into the site itself:
+   Bricolage Grotesque for display/headings, IBM Plex Sans for body, IBM Plex
+   Mono for code, and a single teal accent on links, active nav, and buttons.
+   Pure token + type overrides — no structural changes. Loads after the theme
+   (PaperMod appends assets/css/extended/*), so equal-specificity rules win.
+   Fonts are pulled in by layouts/partials/extend_head.html.
+--------------------------------------------------------------------------- */
+
+:root {
+    --radius: 10px;
+    --accent: #0f7d6b;
+    --accent-ink: #0b5e51;
+    /* neutrals nudged a touch cooler so the accent reads as chosen */
+    --border: rgb(226, 231, 229);
+    --code-bg: rgb(243, 246, 245);
+}
+
+:root[data-theme="dark"] {
+    --accent: #4bc4ac;
+    --accent-ink: #7ad6c3;
+    --border: rgb(43, 51, 49);
+    --code-bg: rgb(30, 37, 36);
+}
+
+/* --- Type -------------------------------------------------------------- */
+
+body {
+    font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title, .entry-header h1, .entry-header h2,
+.profile h1, .archive-year, .archive-month-header {
+    font-family: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+    letter-spacing: -0.018em;
+}
+
+.logo a {
+    font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif;
+    letter-spacing: -0.02em;
+}
+
+code, kbd, pre, tt,
+.post-content code, .post-content pre {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* --- Accent ------------------------------------------------------------ */
+
+/* content links */
+.post-content a,
+.post-content a:visited {
+    color: var(--accent);
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+}
+.post-content a:hover {
+    color: var(--accent-ink);
+}
+
+/* nav */
+.menu a:hover {
+    color: var(--accent);
+}
+.menu .active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* home / profile buttons */
+.button {
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.button:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* entry-title hover across list cards */
+.post-entry:hover .entry-header h1,
+.post-entry:hover .entry-header h2 {
+    color: var(--accent);
+}
+
+/* recent-posts section headings on the homepage pick up the accent lightly */
+.profile-posts h2 {
+    color: var(--accent);
+}
+.profile-posts .all-posts a:hover {
+    color: var(--accent);
+}
+
+/* --- Cards ------------------------------------------------------------- */
+
+/* a slightly softer, more lifted card than PaperMod's default flat entry */
+.post-entry,
+.content-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.post-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(20, 30, 28, 0.07);
+    border-color: var(--accent);
+}
+:root[data-theme="dark"] .post-entry:hover {
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+}
