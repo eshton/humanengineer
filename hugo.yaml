@@ -31,7 +31,8 @@ params:
   author: Agoston Fung
   keywords: ["software engineering", "consulting", "Equal Experts", "Budapest", "blog", "portfolio"]
   mainSections: ["posts", "articles", "projects"]
-  defaultTheme: auto
+  defaultTheme: light
+  disableThemeToggle: true
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
