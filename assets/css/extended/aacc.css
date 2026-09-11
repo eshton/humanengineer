@@ -1,0 +1,18 @@
+/* AACC (AI Attribution and Creative Content) badge — theme-aware swap.
+   Black artwork on light theme, white artwork on dark theme.
+   Badges by Dave Malone, CC BY 4.0 — https://github.com/dzmalone/aacc */
+.aacc-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.aacc-badge img {
+  width: 96px;
+  height: 96px;
+  flex: 0 0 auto;
+}
+.aacc-badge .aacc-dark { display: none; }
+html[data-theme="dark"] .aacc-badge .aacc-light { display: none; }
+html[data-theme="dark"] .aacc-badge .aacc-dark { display: inline; }
+.aacc-badge .aacc-caption { font-size: 0.9rem; }

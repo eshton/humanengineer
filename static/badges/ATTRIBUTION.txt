@@ -1,0 +1,6 @@
+AACC (AI Attribution and Creative Content) badges by Dave Malone.
+Source: https://github.com/dzmalone/aacc
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+
+Files renamed for this site (aacc-<code>-<black|white>.png); artwork unmodified.
