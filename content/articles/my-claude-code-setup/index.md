@@ -1,6 +1,6 @@
 ---
 title: "My Claude Code Setup"
-date: 2026-09-11
+date: 2026-07-23
 draft: false
 tags: ["claude-code", "ai", "tooling", "workflow"]
 categories: []
@@ -28,62 +28,11 @@ I put infra MCPs at number one because these tools are the single biggest time s
 
 Right now, I just ask my agent to pull the logs and analyse them. We also have scheduled tasks that run and pick up errors and automatically analyse, fix, and create a PR that just waits for review.
 
-How much access you give to these tools is also important. I am on the safe side, and would only allow read-only MCPs where I can; write tools are generally not present on the connections I use day to day.
+How much access you give to these tools is also important. I keep them on a short leash — read-only wherever I can — and the leash is different per provider.
 
-The table below lists the tools each of these MCP servers exposes and flags which ones can change state. This is the surface I saw with the servers connected in my own session — the exact set depends on the server version and how it is configured, and a read-only configuration will hide most of the "Write" rows.
+For Supabase it's not just a convention: the server takes a `--read-only` flag. My **production** connection runs with it, so a query through `execute_sql` is forced into a read-only transaction and the write tools — migrations, edge-function deploys, the branch operations — aren't exposed at all. The full write surface only exists on the **staging** connection, which is where those changes belong anyway.
 
-| MCP | Tool | What it does | Write? |
-|---|---|---|---|
-| Supabase | `list_tables` | List tables in the schema | Read-only |
-| Supabase | `list_extensions` | List installed Postgres extensions | Read-only |
-| Supabase | `list_migrations` | List applied migrations | Read-only |
-| Supabase | `list_branches` | List database branches | Read-only |
-| Supabase | `list_edge_functions` | List edge functions | Read-only |
-| Supabase | `get_edge_function` | Fetch an edge function's code | Read-only |
-| Supabase | `get_logs` | Read service logs | Read-only |
-| Supabase | `get_advisors` | Security/performance advisories | Read-only |
-| Supabase | `get_project_url` | Get the project API URL | Read-only |
-| Supabase | `get_publishable_keys` | Get publishable API keys | Read-only |
-| Supabase | `generate_typescript_types` | Generate TS types from schema | Read-only |
-| Supabase | `search_docs` | Search Supabase docs | Read-only |
-| Supabase | `execute_sql` | Run arbitrary SQL | **Read/Write** |
-| Supabase | `apply_migration` | Apply a DDL migration | **Write** |
-| Supabase | `deploy_edge_function` | Deploy an edge function | **Write** |
-| Supabase | `create_branch` | Create a database branch | **Write** |
-| Supabase | `merge_branch` | Merge a branch | **Write** |
-| Supabase | `rebase_branch` | Rebase a branch | **Write** |
-| Supabase | `reset_branch` | Reset a branch (destructive) | **Write** |
-| Supabase | `delete_branch` | Delete a branch (destructive) | **Write** |
-| Vercel | `list_projects` | List projects | Read-only |
-| Vercel | `get_project` | Project details | Read-only |
-| Vercel | `list_deployments` | List deployments | Read-only |
-| Vercel | `get_deployment` | Deployment details | Read-only |
-| Vercel | `get_deployment_build_logs` | Read build logs | Read-only |
-| Vercel | `get_runtime_logs` | Read runtime logs | Read-only |
-| Vercel | `get_runtime_errors` | Read runtime errors | Read-only |
-| Vercel | `get_web_analytics` | Read web analytics | Read-only |
-| Vercel | `list_teams` | List teams | Read-only |
-| Vercel | `get_access_to_vercel_url` | Get access to a deployment URL | Read-only |
-| Vercel | `web_fetch_vercel_url` | Fetch a Vercel URL's content | Read-only |
-| Vercel | `list_agent_runs` / `get_agent_run` / `get_agent_run_trace` / `list_agent_run_projects` | Inspect agent runs | Read-only |
-| Vercel | `list_toolbar_threads` / `get_toolbar_thread` | Read toolbar feedback threads | Read-only |
-| Vercel | `check_domain_availability_and_price` / `get_domain_order` / `get_purchase_quote` | Domain/billing lookups | Read-only |
-| Vercel | `search_vercel_documentation` | Search Vercel docs | Read-only |
-| Vercel | `deploy_to_vercel` | Trigger a deployment | **Write** |
-| Vercel | `import-claude-design-from-url` | Import a design into a project | **Write** |
-| Vercel | `add_toolbar_reaction` / `reply_to_toolbar_thread` / `edit_toolbar_message` / `change_toolbar_thread_resolve_status` | Post/edit toolbar feedback | **Write** |
-| Vercel | `buy_domain` / `buy_pro` / `buy_addon` / `buy_credits` | Purchases (spend money) | **Write** |
-| Modal | `list_modal_volumes` | List volumes | Read-only |
-| Modal | `list_modal_volume_contents` | List files in a volume | Read-only |
-| Modal | `get_modal_volume_file` | Read a volume file | Read-only |
-| Modal | `deploy_modal_app` | Deploy a Modal app | **Write** |
-| Modal | `put_modal_volume_file` | Upload a file to a volume | **Write** |
-| Modal | `copy_modal_volume_files` | Copy files within a volume | **Write** |
-| Modal | `remove_modal_volume_file` | Delete a volume file (destructive) | **Write** |
-
-For Supabase this is not just a convention — the server takes a `--read-only` flag. My **production** connection runs with it, so `execute_sql` is forced into a read-only transaction and the write tools (`apply_migration`, `deploy_edge_function`, the branch operations) are not exposed at all. The full "Write" surface above is only reachable on the **staging** connection.
-
-Vercel is the opposite story: there is no read-only mode. Connecting grants the same access as your Vercel user account, and the write tools include ones that spend money (`buy_*`). The only controls are coarse — OAuth consent per client and access tokens scoped to specific projects (a token can either touch a project or not; there is no per-tool or read-only scoping) — so the practical guard is keeping the token project-scoped and requiring human confirmation on each call.
+Vercel is the opposite story: there is no read-only mode. Connecting grants the same access as your Vercel user account, and some of the write tools spend money. The only controls are coarse — OAuth consent per client, and access tokens scoped to specific projects (a token can either touch a project or not; there's no per-tool or read-only scoping) — so the practical guard is keeping the token project-scoped and confirming each call by hand.
 
 #### Supabase
 
