@@ -1,0 +1,20 @@
+/* Compact the profileMode hero so "Recent posts" / "Recent articles" are
+   visible without scrolling. PaperMod's common/profile-mode.css sizes
+   `.main .profile` to roughly the full viewport height and vertically
+   centres it, which pushes the recent-posts row far below the fold. Size the
+   hero to its content with modest spacing instead. This file loads after the
+   theme CSS (PaperMod appends assets/css/extended/*), so equal-specificity
+   rules here win. */
+
+.main .profile {
+    min-height: auto;
+    padding: 2rem 0 1.25rem;
+}
+
+.profile .profile_inner {
+    gap: 0.8rem;
+}
+
+.profile-recent-row {
+    margin-top: 0.5rem;
+}
