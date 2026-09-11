@@ -1,8 +1,9 @@
 # EXIF/photo details pasted from Pexels' owner-only "Fotó adatai" panel
 # (Photo details modal, visible when logged in as the photo's uploader).
-# Keyed by the image filename under content/photography/. Not wired into
-# any template yet — collected here for a future feature that displays
-# this on the photography page.
+# Keyed by the image filename under content/photography/. Consumed by the
+# `photo` shortcode (layouts/shortcodes/photo.html), which reads it via
+# `index site.Data "photo-exif"` and emits the fields as data-* attributes
+# for the photography lightbox sidebar.
 #
 # Fields: dimensions, aspectRatio, camera, focalLength, aperture, iso,
 # shutterSpeed, dateTaken, software, location (add when pasted).
