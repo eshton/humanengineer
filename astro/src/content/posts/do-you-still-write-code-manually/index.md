@@ -7,7 +7,7 @@ categories: ["industry"]
 summary: "One question tells you an engineer's agentic adoption — and the concerns that come up when people make the leap."
 cover:
   image: "cover.jpeg"
-  alt: "An engineer at a laptop surrounded by agentic workflow tools — review, database, deploy, and orchestration."
+  alt: "An engineer leaping across a chasm from a crumbling desk to a bright side where an AI agent waits — a leap of faith."
 ---
 
 You can assess an engineer's agentic adoption by asking a very simple
