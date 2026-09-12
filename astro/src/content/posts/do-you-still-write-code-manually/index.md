@@ -5,6 +5,9 @@ draft: false
 tags: ["ai", "engineering", "agentic-engineering"]
 categories: ["industry"]
 summary: "One question tells you an engineer's agentic adoption — and the concerns that come up when people make the leap."
+cover:
+  image: "cover.jpeg"
+  alt: "An engineer at a laptop surrounded by agentic workflow tools — review, database, deploy, and orchestration."
 ---
 
 You can assess an engineer's agentic adoption by asking a very simple

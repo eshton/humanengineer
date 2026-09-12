@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import CoverCard from "@components/CoverCard.astro";
+import PostListCard from "@components/PostListCard.astro";
 import { POSTS } from "@consts";
 
 const posts = (await getCollection("posts"))
@@ -14,8 +14,8 @@ const posts = (await getCollection("posts"))
     <div class="hd-shead animate">
       <h2><span class="bar-i"></span>Posts</h2>
     </div>
-    <div class="hd-grid animate">
-      {posts.map((e) => <CoverCard entry={e} kind="Post" />)}
+    <div class="hd-postgrid animate">
+      {posts.map((e) => <PostListCard entry={e} />)}
     </div>
   </div>
 </Layout>

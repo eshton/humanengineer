@@ -5,6 +5,9 @@ draft: false
 tags: ["ai", "industry"]
 categories: ["industry"]
 summary: "The debate isn't whether agents will take over. They already did — the question is whether you go agentic or get left behind."
+cover:
+  image: "cover.jpeg"
+  alt: "An engineer striding ahead with an AI agent while others are left behind, unsure."
 ---
 
 I am still reading a lot of posts on LinkedIn that pose questions such as:

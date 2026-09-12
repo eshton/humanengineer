@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import { categoryOf } from "@lib/category";
+import { excerpt } from "@lib/excerpt";
+import type { CollectionEntry } from "astro:content";
+
+const { entry } = Astro.props as { entry: CollectionEntry<"posts"> };
+const cat = categoryOf(entry.data);
+const href = `/${entry.collection}/${entry.id}`;
+const meta = entry.data.date.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+const text = entry.data.summary ?? excerpt(entry.body, 300);
+---
+
+<a href={href} class={`hd-pl cg-${cat.key}`}>
+  <div class="cv">
+    {
+      entry.data.cover && (
+        <Image
+          src={entry.data.cover.image}
+          alt={entry.data.cover.alt ?? entry.data.title}
+          width={860}
+          height={420}
+        />
+      )
+    }
+    <span class="hd-badge">{cat.label}</span>
+  </div>
+  <div class="in">
+    <h3>{entry.data.title}</h3>
+    <div class="meta">{meta}</div>
+    {text && <p>{text}</p>}
+    <span class="more">Read post &rarr;</span>
+  </div>
+</a>

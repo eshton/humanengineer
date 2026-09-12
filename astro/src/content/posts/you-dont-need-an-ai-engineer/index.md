@@ -5,6 +5,9 @@ draft: false
 tags: ["ai", "career", "industry"]
 categories: ["industry"]
 summary: "The whole concept of a designated 'AI Engineer' is wrong — all engineers are becoming AI engineers."
+cover:
+  image: "cover.jpeg"
+  alt: "An engineer tinkering with a small friendly robot at a workbench."
 ---
 
 💡 Fun fact: add "agentic engineering" to your profile, and suddenly you're

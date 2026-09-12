@@ -4,6 +4,9 @@ date: 2025-12-09
 draft: false
 tags: ["productivity", "psychology", "creativity"]
 categories: ["personal"]
+cover:
+  image: "cover.jpeg"
+  alt: "A developer at a dark desk beside a sunlit forest path — time to walk away."
 summary: "The counter-intuitive way to solve hard problems isn't to grind harder. It's to leave them alone. Here's the research backing it - the incubation effect."
 ---
 
