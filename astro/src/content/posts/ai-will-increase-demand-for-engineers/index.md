@@ -5,6 +5,9 @@ draft: false
 tags: ["ai", "career", "industry", "future-of-work"]
 categories: ["industry"]
 summary: "AI will grow demand for software and engineers rather than replace them — and the early signs are already showing."
+cover:
+  image: "cover.jpeg"
+  alt: "A team of engineers gathered around a monitor in an office, discussing their work."
 ---
 
 AI will increase demand for software and engineers rather than replace them.
