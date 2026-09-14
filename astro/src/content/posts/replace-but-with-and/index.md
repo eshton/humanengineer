@@ -5,6 +5,9 @@ draft: false
 tags: ["communication", "career", "personal"]
 categories: ["personal"]
 summary: "A big part of workplace communication is how you handle disagreement — and one small word swap changes everything."
+cover:
+  image: "cover.jpeg"
+  alt: "Two people arguing with clashing puzzle pieces (BUT) versus connecting, smiling with joined pieces (AND)."
 ---
 
 A big part of successful communication at work is how you handle
