@@ -40,54 +40,56 @@ const specs: { label: string; value?: string; href?: string }[] = [
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
     </div>
-    <div class="animate my-10 space-y-3">
-      <div class="flex items-center gap-1.5 text-sm">
-        <FormattedDate date={project.data.date} />
-      </div>
-      <h1 class="font-display text-4xl font-bold tracking-tight text-black dark:text-white">
-        {project.data.title}
-      </h1>
-    </div>
-
-    {
-      specs.length > 0 && (
-        <dl class="project-specs animate">
-          {specs.map((s) => (
-            <div class="spec-row">
-              <dt>{s.label}</dt>
-              <dd>
-                {s.href ? (
-                  <a href={s.href} target="_blank" rel="noopener">
-                    {s.value}
-                  </a>
-                ) : (
-                  s.value
-                )}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      )
-    }
-
-    {
-      project.data.cover && (
-        <div class="animate mb-10 overflow-hidden rounded-xl">
-          <Image
-            src={project.data.cover.image}
-            alt={project.data.cover.alt ?? project.data.title}
-            width={1600}
-            height={840}
-          />
+    <div class="content-card animate mt-6">
+      <div class="mb-6 space-y-3">
+        <div class="flex items-center gap-1.5 text-sm">
+          <FormattedDate date={project.data.date} />
         </div>
-      )
-    }
-    {headings.length > 0 && <TableOfContents headings={headings} />}
-    <article class="animate">
-      <Content />
-      <div class="mt-24">
-        <PostNavigation prevPost={prev} nextPost={next} />
+        <h1 class="font-display text-4xl font-bold tracking-tight text-black dark:text-white">
+          {project.data.title}
+        </h1>
       </div>
-    </article>
+
+      {
+        specs.length > 0 && (
+          <dl class="project-specs">
+            {specs.map((s) => (
+              <div class="spec-row">
+                <dt>{s.label}</dt>
+                <dd>
+                  {s.href ? (
+                    <a href={s.href} target="_blank" rel="noopener">
+                      {s.value}
+                    </a>
+                  ) : (
+                    s.value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )
+      }
+
+      {
+        project.data.cover && (
+          <div class="mb-10 mt-8 overflow-hidden rounded-xl">
+            <Image
+              src={project.data.cover.image}
+              alt={project.data.cover.alt ?? project.data.title}
+              width={1600}
+              height={840}
+            />
+          </div>
+        )
+      }
+      {headings.length > 0 && <TableOfContents headings={headings} />}
+      <article>
+        <Content />
+      </article>
+    </div>
+    <div class="animate mt-16">
+      <PostNavigation prevPost={prev} nextPost={next} />
+    </div>
   </Container>
 </Layout>

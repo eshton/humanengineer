@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import PostFullList from "@components/PostFullList.astro";
+import Pagination from "@components/Pagination.astro";
+import { POSTS, PER_PAGE } from "@consts";
+
+export async function getStaticPaths() {
+  const all = (await getCollection("posts"))
+    .filter((e) => !e.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  const totalPages = Math.ceil(all.length / PER_PAGE);
+  const paths = [];
+  // Page 1 lives at /posts; generate 2..N here.
+  for (let p = 2; p <= totalPages; p++) {
+    paths.push({
+      params: { page: String(p) },
+      props: {
+        posts: all.slice((p - 1) * PER_PAGE, p * PER_PAGE),
+        currentPage: p,
+        totalPages,
+      },
+    });
+  }
+  return paths;
+}
+
+type Props = {
+  posts: CollectionEntry<"posts">[];
+  currentPage: number;
+  totalPages: number;
+};
+const { posts, currentPage, totalPages } = Astro.props as Props;
+---
+
+<Layout title={`Posts — page ${currentPage}`} description={POSTS.DESCRIPTION}>
+  <div class="reading-wide" data-pagefind-ignore>
+    <div class="list-head animate">
+      <h1>Posts</h1>
+      <p>{POSTS.DESCRIPTION}</p>
+    </div>
+    <PostFullList posts={posts} />
+    <Pagination currentPage={currentPage} totalPages={totalPages} />
+  </div>
+</Layout>

@@ -8,6 +8,7 @@ export const SITE: Site = {
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
+export const PER_PAGE = 8;
 export const HOME: Metadata = {
   TITLE: "Home",
   DESCRIPTION: "Notes on engineering, AI, and the people writing it.",

@@ -5,11 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif,
+  /* Match the old PaperMod system font stack — no custom webfonts. */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, 'Liberation Mono', 'Courier New', monospace;
-  --font-display: 'Bricolage Grotesque Variable', 'IBM Plex Sans', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --font-display: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /*
@@ -159,12 +162,7 @@ pre {
   --brand:#0C8074;
   --c-eng:#0C8074; --c-ai:#6D4AD6; --c-car:#C7791A; --c-dat:#C24B6E;
 }
-.dark {
-  --ground:#0D1210; --panel:#141C19; --surface:#18211E; --hd-ink:#ECF1EE; --hd-muted:#93A29C;
-  --hd-border:#26322E; --hd-shadow:0 12px 34px -14px rgba(0,0,0,.6);
-  --brand:#2FD3BE;
-  --c-eng:#2FD3BE; --c-ai:#A98BFF; --c-car:#E7A94E; --c-dat:#EE7C9C;
-}
+/* Night mode removed — site is light-only. */
 
 /* warm ground site-wide (unlayered → beats Tailwind @apply on body) */
 body { background: var(--ground); color: var(--hd-ink); }
@@ -273,8 +271,8 @@ body { background: var(--ground); color: var(--hd-ink); }
 .cv-main h2{border-bottom:1px solid var(--hd-border);padding-bottom:.3rem}
 .cv-entry{margin-bottom:1.4rem}
 .cv-entry h3{display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem;font-family:var(--font-display);font-weight:600;font-size:1.12rem;color:var(--hd-ink)}
-.cv-logo{flex:0 0 auto;width:1.4rem;height:1.4rem;object-fit:contain;border-radius:4px;background:#fff;padding:2px;border:1px solid var(--hd-border)}
-.cv-entry .cv-dates{display:block;color:var(--hd-muted);font-size:.85rem;margin-bottom:.4rem;font-family:var(--font-mono)}
+.cv-logo{flex:0 0 auto;width:1.4rem;height:1.4rem;margin:0;object-fit:contain;border-radius:4px;background:#fff;padding:2px;border:1px solid var(--hd-border)}
+.cv-entry .cv-dates{display:block;color:var(--hd-muted);font-size:.85rem;margin-bottom:.4rem}
 .cv-entry p{margin:0;color:var(--hd-ink)}
 .cv-entry p + p{margin-top:.5rem}
 .cv-tags{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 0;padding:0}
@@ -320,3 +318,65 @@ body { background: var(--ground); color: var(--hd-ink); }
 .hd-pl p{margin:.2rem 0 0;color:var(--hd-muted);font-size:.95rem;line-height:1.55;
   display:-webkit-box;-webkit-line-clamp:5;line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .hd-pl .more{margin-top:auto;padding-top:12px;font-family:var(--font-mono);font-size:.76rem;color:var(--cat,var(--brand));letter-spacing:.03em}
+
+/* ===== old-Hugo-style list pages ===== */
+.list-head{margin-bottom:30px}
+.list-head h1{font-family:var(--font-display);font-weight:700;letter-spacing:-.03em;font-size:2.2rem;margin:0;color:var(--hd-ink)}
+.list-head p{color:var(--hd-muted);margin:.5rem 0 0;max-width:60ch}
+
+/* posts: framed cards, cover image on top, full content inside (matches
+   the boxed article/project frame) */
+.post-list{display:flex;flex-direction:column;gap:32px}
+.short-post{display:block;background:var(--surface);border:1px solid var(--hd-border);border-radius:16px;overflow:hidden;box-shadow:0 6px 20px -14px rgba(26,35,32,.25)}
+.short-post-media{display:block;padding:0;border:0;background:none;cursor:zoom-in;line-height:0}
+.short-post-media img{max-width:100%;height:auto;width:auto;display:block}
+.short-post-body{padding:26px 32px 30px}
+.short-post-body h2{font-family:var(--font-display);font-weight:700;font-size:1.6rem;letter-spacing:-.02em;line-height:1.2;margin:0}
+.short-post-body h2 a{color:var(--hd-ink);text-decoration:none}
+.short-post-body h2 a:hover{color:var(--brand)}
+.short-post-body .entry-date{margin:6px 0 14px;color:var(--hd-muted);font-size:.85rem}
+.short-post-content{max-width:none;margin-top:0}
+.short-post-content :first-child{margin-top:0}
+@media(max-width:600px){.short-post-media img{height:220px}.short-post-body{padding:22px}}
+
+/* articles: cover + excerpt + read-more button */
+.article-list{display:flex;flex-direction:column;gap:44px}
+.article-entry{display:flex;align-items:flex-start;gap:24px}
+.article-entry-media{flex:0 0 auto;display:block;line-height:0;border-radius:12px;overflow:hidden}
+.article-entry-media img{width:220px;height:220px;object-fit:cover;display:block;transition:transform .25s ease}
+.article-entry-media:hover img{transform:scale(1.03)}
+.article-entry-body{flex:1 1 auto;min-width:0}
+.article-entry-body h2{font-family:var(--font-display);font-weight:700;font-size:1.65rem;letter-spacing:-.02em;line-height:1.2;margin:0}
+.article-entry-body h2 a{color:var(--hd-ink);text-decoration:none}
+.article-entry-body h2 a:hover{color:var(--brand)}
+.article-entry-body .entry-date{margin:6px 0 12px;color:var(--hd-muted);font-size:.85rem}
+.article-entry-body .excerpt{color:var(--hd-muted);line-height:1.62;margin:0}
+.article-read-more{display:inline-flex;align-items:center;gap:.35rem;margin-top:16px;padding:.45rem .95rem;border:1px solid var(--hd-border);border-radius:8px;font-size:.9rem;color:var(--hd-ink);text-decoration:none;transition:background .15s ease}
+.article-read-more:hover{background:color-mix(in srgb,var(--hd-ink) 7%,transparent)}
+.article-read-more svg{width:14px;height:14px}
+@media(max-width:600px){.article-entry{flex-direction:column}.article-entry-media,.article-entry-media img{width:100%}.article-entry-media img{height:auto;max-height:260px}}
+
+/* projects: picture-only grid */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+.project-grid-item{display:block;text-decoration:none;color:inherit}
+.project-grid-item img{display:block;width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:.65rem;transition:transform .25s ease}
+.project-grid-item:hover img{transform:scale(1.03)}
+.project-grid-caption{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+.project-grid-title{font-family:var(--font-display);font-weight:700;font-size:1.08rem;letter-spacing:-.01em;color:var(--hd-ink)}
+.project-grid-item:hover .project-grid-title{color:var(--brand)}
+.project-grid-caption time{flex:0 0 auto;color:var(--hd-muted);font-size:.85rem;white-space:nowrap}
+
+/* boxed single-page content (articles/projects), like the old .content-card */
+.content-card{background:var(--surface);border:1px solid var(--hd-border);border-radius:16px;padding:32px;box-shadow:0 6px 20px -14px rgba(26,35,32,.25)}
+@media(max-width:600px){.content-card{padding:22px}}
+
+/* wider reading column for single post/article pages */
+.reading-wide{max-width:840px;margin:0 auto;padding-inline:22px}
+
+/* one shared link-hover colour everywhere (menu, footer, prose, tags) */
+header nav a:hover,
+header nav button:hover,
+footer a:hover,
+footer button:hover,
+article a:hover,
+a[href^="/tags/"]:hover{color:var(--brand)}

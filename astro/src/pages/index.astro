@@ -2,133 +2,215 @@
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-import { SITE, HOME } from "@consts";
-import FeaturedCard from "@components/FeaturedCard.astro";
-import CoverCard from "@components/CoverCard.astro";
+import { HOME, SITE, SOCIALS } from "@consts";
 import profile from "../assets/profile.jpg";
 
 const notDraft = (e: { data: { draft?: boolean } }) => !e.data.draft;
 const byDate = (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf();
 
-const articles = (await getCollection("articles")).filter(notDraft).sort(byDate);
-const posts = (await getCollection("posts")).filter(notDraft).sort(byDate);
-const projects = (await getCollection("projects"))
-  .filter(notDraft)
-  .sort(byDate)
-  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+const posts = (await getCollection("posts")).filter(notDraft).sort(byDate).slice(0, 5);
+const articles = (await getCollection("articles")).filter(notDraft).sort(byDate).slice(0, 3);
 
-const featured = articles[0];
+const short = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" });
 
-// "Latest" mixes remaining articles + posts, newest first — "recent anything".
-type Mixed = { entry: CollectionEntry<"articles" | "posts">; kind: string };
-const latest: Mixed[] = [
-  ...articles.slice(1).map((e) => ({ entry: e, kind: "Article" })),
-  ...posts.map((e) => ({ entry: e, kind: "Post" })),
-]
-  .sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+const github = SOCIALS.find((s) => s.NAME === "GitHub")?.HREF ?? "https://github.com/eshton";
+const linkedin =
+  SOCIALS.find((s) => s.NAME === "LinkedIn")?.HREF ?? "https://www.linkedin.com/in/agostonfung";
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <div class="hd-wrap">
-    <!-- Hero -->
-    <section class="hd-hero animate">
-      <div class="inner">
-        <div class="hd-avatar">
-          <Image src={profile} alt="Agoston Fung" width={300} height={300} />
-        </div>
-        <div>
-          <h1>Agoston Fung</h1>
-          <p class="tag">
-            Notes on <b>engineering</b>, <b>AI</b>, and the people writing it.
-          </p>
-          <div class="hd-cta">
-            <a class="hd-btn primary" href="/articles">
-              Read the articles
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                ><path d="M5 12h14M13 6l6 6-6 6"></path></svg
-              >
-            </a>
-            <a class="hd-btn" href="https://github.com/eshton" target="_blank" rel="me">
-              <svg viewBox="0 0 24 24" fill="currentColor"
-                ><path
-                  d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10.3 10.3 0 0 0 22 12.3C22 6.6 17.5 2 12 2z"
-                ></path></svg
-              >
-              eshton
-            </a>
-            <a
-              class="hd-btn"
-              href="https://www.linkedin.com/in/agostonfung"
-              target="_blank"
-              rel="me"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor"
-                ><path
-                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.3 18V10H5.7v8h2.6zM7 8.8A1.5 1.5 0 1 0 7 5.8a1.5 1.5 0 0 0 0 3zM18.3 18v-4.4c0-2.4-1.3-3.5-3-3.5-1.4 0-2 .8-2.3 1.3V10H10.4v8H13v-4.5c0-1.2.6-1.8 1.4-1.8s1.3.6 1.3 1.8V18h2.6z"
-                ></path></svg
-              >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="profile">
+    <div class="avatar">
+      <Image src={profile} alt="Agoston Fung" width={440} height={440} />
+    </div>
 
-    <!-- Featured -->
-    {
-      featured && (
-        <section class="hd-section animate" style="margin-top:52px">
-          <div class="hd-shead">
-            <h2>
-              <span class="bar-i" />Featured
-            </h2>
-            <a href="/articles">ALL ARTICLES &rarr;</a>
-          </div>
-          <FeaturedCard entry={featured} />
-        </section>
-      )
-    }
+    <h1>Agoston Fung</h1>
+    <p class="tagline"><em>Notes on engineering, AI, and the people writing it.</em></p>
+    <p class="bio">Consulting engineer at Equal Experts.</p>
 
-    <!-- Latest (articles + posts) -->
-    <section class="hd-section animate">
-      <div class="hd-shead">
-        <h2><span class="bar-i"></span>Latest</h2>
-        <a href="/posts">EVERYTHING &rarr;</a>
-      </div>
-      <div class="hd-grid">
-        {latest.map((m) => <CoverCard entry={m.entry} kind={m.kind} />)}
-      </div>
-    </section>
+    <nav class="socials" aria-label="Social links">
+      <a href={linkedin} target="_blank" rel="me noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+          ><path
+            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.3 18V10H5.7v8h2.6zM7 8.8A1.5 1.5 0 1 0 7 5.8a1.5 1.5 0 0 0 0 3zM18.3 18v-4.4c0-2.4-1.3-3.5-3-3.5-1.4 0-2 .8-2.3 1.3V10H10.4v8H13v-4.5c0-1.2.6-1.8 1.4-1.8s1.3.6 1.3 1.8V18h2.6z"
+          ></path></svg
+        >
+      </a>
+      <a href={github} target="_blank" rel="me noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+          ><path
+            d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10.3 10.3 0 0 0 22 12.3C22 6.6 17.5 2 12 2z"
+          ></path></svg
+        >
+      </a>
+      <a href={`mailto:${SITE.EMAIL}`} aria-label="Email" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+          ><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg
+        >
+      </a>
+      <a href="/rss.xml" aria-label="RSS" title="RSS feed">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+          ><path
+            d="M4 11a9 9 0 0 1 9 9h2.5A11.5 11.5 0 0 0 4 8.5V11zm0 4a5 5 0 0 1 5 5h2.5A7.5 7.5 0 0 0 4 12.5V15zm1.5 3.5a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5z"
+          ></path></svg
+        >
+      </a>
+    </nav>
 
-    <!-- Projects -->
-    <section class="hd-section animate">
-      <div class="hd-shead">
-        <h2><span class="bar-i"></span>Projects</h2>
-        <a href="/projects">ALL WORK &rarr;</a>
-      </div>
-      <div class="hd-pgrid">
-        {
-          projects.map((p) => (
-            <a href={`/projects/${p.id}`} class="hd-pcard">
-              <span class="k">{p.data.projectType ?? "Project"}</span>
-              <h3>{p.data.title}</h3>
-              {(p.data.summary ?? p.data.description) && (
-                <p>{p.data.summary ?? p.data.description}</p>
-              )}
-            </a>
-          ))
-        }
-      </div>
-    </section>
+    <div class="recent">
+      <section>
+        <h2>Recent posts</h2>
+        <ul>
+          {
+            posts.map((e) => (
+              <li>
+                <a href={`/posts/${e.id}`}>{e.data.title}</a>
+                <time datetime={e.data.date.toISOString()}>{short(e.data.date)}</time>
+              </li>
+            ))
+          }
+        </ul>
+        <a class="more" href="/posts">All posts &rarr;</a>
+      </section>
 
-    <!-- Connect -->
-    <section class="hd-section animate" style="margin-bottom:8px">
-      <p class="hd-connect">
-        Get in touch &mdash;
-        <a href={`mailto:${SITE.EMAIL}`}>{SITE.EMAIL}</a>
-      </p>
-    </section>
+      <section>
+        <h2>Recent articles</h2>
+        <ul>
+          {
+            articles.map((e) => (
+              <li>
+                <a href={`/articles/${e.id}`}>{e.data.title}</a>
+                <time datetime={e.data.date.toISOString()}>{short(e.data.date)}</time>
+              </li>
+            ))
+          }
+        </ul>
+        <a class="more" href="/articles">All articles &rarr;</a>
+      </section>
+    </div>
   </div>
 </Layout>
+
+<style>
+  .profile {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 22px 8px;
+    text-align: center;
+  }
+  .avatar {
+    width: 220px;
+    height: 220px;
+    margin: 8px auto 0;
+  }
+  .avatar :global(img) {
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+  .profile h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-size: 2.9rem;
+    margin: 26px 0 0;
+    color: var(--hd-ink);
+  }
+  .tagline {
+    font-size: 1.2rem;
+    color: var(--hd-ink);
+    margin: 16px 0 0;
+  }
+  .bio {
+    color: var(--hd-muted);
+    margin: 22px 0 0;
+  }
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 26px;
+  }
+  .socials a {
+    color: var(--hd-ink);
+    transition: color 0.2s ease;
+  }
+  .socials a:hover {
+    color: var(--brand);
+  }
+  .socials svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  .recent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 52px;
+    margin-top: 46px;
+    text-align: left;
+  }
+  .recent h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: var(--brand);
+    text-align: center;
+    margin: 0 0 6px;
+  }
+  .recent ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .recent li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--hd-border);
+  }
+  .recent li a {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.16rem;
+    letter-spacing: -0.02em;
+    color: var(--hd-ink);
+    text-decoration: none;
+  }
+  .recent li a:hover {
+    color: var(--brand);
+  }
+  .recent li time {
+    flex: none;
+    color: var(--hd-muted);
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .more {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: var(--hd-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .more:hover {
+    color: var(--brand);
+  }
+
+  @media (max-width: 680px) {
+    .recent {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+    .profile h1 {
+      font-size: 2.1rem;
+    }
+  }
+</style>

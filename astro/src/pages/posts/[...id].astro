@@ -30,55 +30,57 @@ const desc = post.data.summary ?? post.data.description ?? "";
 ---
 
 <Layout title={post.data.title} description={desc}>
-  <Container>
+  <div class="reading-wide">
     <div class="animate">
       <BackToPrevious href="/posts">Back to posts</BackToPrevious>
     </div>
-    <div class="my-10 space-y-3">
-      <div class="animate flex items-center gap-1.5 text-sm">
-        <FormattedDate date={post.data.date} />
-        &bull;
-        {post.body && <span>{readingTime(post.body)}</span>}
+    <div class="content-card animate mt-6">
+      <div class="mb-10 space-y-3">
+        <div class="flex items-center gap-1.5 text-sm">
+          <FormattedDate date={post.data.date} />
+          &bull;
+          {post.body && <span>{readingTime(post.body)}</span>}
+        </div>
+        <h1 class="font-display text-4xl font-bold tracking-tight text-black dark:text-white">
+          {post.data.title}
+        </h1>
+        {
+          post.data.tags && post.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 pt-1">
+              {post.data.tags.map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )
+        }
       </div>
-      <h1 class="animate font-display text-4xl font-bold tracking-tight text-black dark:text-white">
-        {post.data.title}
-      </h1>
       {
-        post.data.tags && post.data.tags.length > 0 && (
-          <div class="animate flex flex-wrap gap-2 pt-1">
-            {post.data.tags.map((tag) => (
-              <a
-                href={`/tags/${tag}`}
-                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
-              >
-                {tag}
-              </a>
-            ))}
+        post.data.cover && (
+          <div class="mb-10 overflow-hidden rounded-xl">
+            <Image
+              src={post.data.cover.image}
+              alt={post.data.cover.alt ?? post.data.title}
+              width={1600}
+              height={840}
+            />
           </div>
         )
       }
+      {headings.length > 0 && <TableOfContents headings={headings} />}
+      <article>
+        <Content />
+      </article>
     </div>
-    {
-      post.data.cover && (
-        <div class="animate mb-10 overflow-hidden rounded-xl">
-          <Image
-            src={post.data.cover.image}
-            alt={post.data.cover.alt ?? post.data.title}
-            width={1600}
-            height={840}
-          />
-        </div>
-      )
-    }
-    {headings.length > 0 && <TableOfContents headings={headings} />}
-    <article class="animate">
-      <Content />
-      <div class="mt-24">
-        <PostNavigation prevPost={prev} nextPost={next} />
-      </div>
-      <div class="mt-24">
-        <Giscus />
-      </div>
-    </article>
-  </Container>
+    <div class="animate mt-16">
+      <PostNavigation prevPost={prev} nextPost={next} />
+    </div>
+    <div class="animate mt-16">
+      <Giscus />
+    </div>
+  </div>
 </Layout>

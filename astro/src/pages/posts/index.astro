@@ -1,21 +1,26 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import PostListCard from "@components/PostListCard.astro";
+import PostFullList from "@components/PostFullList.astro";
+import Pagination from "@components/Pagination.astro";
 import { POSTS } from "@consts";
+import { PER_PAGE } from "@consts";
 
-const posts = (await getCollection("posts"))
+const all = (await getCollection("posts"))
   .filter((e) => !e.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const totalPages = Math.ceil(all.length / PER_PAGE);
+const posts = all.slice(0, PER_PAGE);
 ---
 
 <Layout title={POSTS.TITLE} description={POSTS.DESCRIPTION}>
-  <div class="hd-wrap" data-pagefind-ignore>
-    <div class="hd-shead animate">
-      <h2><span class="bar-i"></span>Posts</h2>
+  <div class="reading-wide" data-pagefind-ignore>
+    <div class="list-head animate">
+      <h1>Posts</h1>
+      <p>{POSTS.DESCRIPTION}</p>
     </div>
-    <div class="hd-postgrid animate">
-      {posts.map((e) => <PostListCard entry={e} />)}
-    </div>
+    <PostFullList posts={posts} />
+    <Pagination currentPage={1} totalPages={totalPages} />
   </div>
 </Layout>

@@ -1,21 +1,43 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
-import CoverCard from "@components/CoverCard.astro";
 import { PROJECTS } from "@consts";
 
 const projects = (await getCollection("projects"))
   .filter((e) => !e.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const shortDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 ---
 
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <div class="hd-wrap" data-pagefind-ignore>
-    <div class="hd-shead animate">
-      <h2><span class="bar-i"></span>Projects</h2>
+    <div class="list-head animate">
+      <h1>Projects</h1>
+      <p>{PROJECTS.DESCRIPTION}</p>
     </div>
-    <div class="hd-grid animate">
-      {projects.map((e) => <CoverCard entry={e} kind="Project" />)}
+
+    <div class="project-grid animate">
+      {
+        projects.map((p) => (
+          <a class="project-grid-item" href={`/projects/${p.id}`}>
+            {p.data.cover && (
+              <Image
+                src={p.data.cover.image}
+                alt={p.data.cover.alt ?? p.data.title}
+                width={640}
+                height={360}
+              />
+            )}
+            <div class="project-grid-caption">
+              <span class="project-grid-title">{p.data.title}</span>
+              <time datetime={p.data.date.toISOString()}>{shortDate(p.data.date)}</time>
+            </div>
+          </a>
+        ))
+      }
     </div>
   </div>
 </Layout>

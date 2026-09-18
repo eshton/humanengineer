@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const { posts } = Astro.props as { posts: CollectionEntry<"posts">[] };
+
+const rendered = await Promise.all(
+  posts.map(async (e) => ({ e, Content: (await render(e)).Content })),
+);
+
+const longDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+---
+
+<div class="post-list animate">
+  {
+    rendered.map(({ e, Content }) => (
+      <div class="short-post">
+        {e.data.cover && (
+          <button class="short-post-media" data-thumb aria-label="Expand image">
+            <Image src={e.data.cover.image} alt={e.data.cover.alt ?? e.data.title} />
+          </button>
+        )}
+        <div class="short-post-body">
+          <h2><a href={`/posts/${e.id}`}>{e.data.title}</a></h2>
+          <div class="entry-date">
+            <time datetime={e.data.date.toISOString()}>{longDate(e.data.date)}</time>
+          </div>
+          <article class="short-post-content">
+            <Content />
+          </article>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<div id="thumb-lightbox" class="thumb-lightbox" data-lightbox>
+  <button type="button" class="thumb-lightbox-close" data-lightbox-close aria-label="Close">
+    &times;
+  </button>
+  <img data-lightbox-img alt="" />
+</div>
+
+<style>
+  .thumb-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4vmin;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .thumb-lightbox.is-open {
+    display: flex;
+  }
+  .thumb-lightbox img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .thumb-lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const box = document.getElementById("thumb-lightbox");
+  const boxImg = box?.querySelector<HTMLImageElement>("[data-lightbox-img]");
+  const open = (src: string, alt: string) => {
+    if (!box || !boxImg) return;
+    boxImg.src = src;
+    boxImg.alt = alt;
+    box.classList.add("is-open");
+  };
+  const close = () => box?.classList.remove("is-open");
+
+  document.querySelectorAll<HTMLElement>("[data-thumb]").forEach((btn) => {
+    const img = btn.querySelector("img");
+    if (!img) return;
+    btn.addEventListener("click", () => open(img.currentSrc || img.src, img.alt));
+  });
+  box?.addEventListener("click", (e) => {
+    const t = e.target as HTMLElement;
+    if (t === box || t.hasAttribute("data-lightbox-close")) close();
+  });
+  document.addEventListener("keydown", (e) => e.key === "Escape" && close());
+</script>
