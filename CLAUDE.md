@@ -1,5 +1,21 @@
 # CLAUDE.md
 
+> **⚠️ MIGRATED TO ASTRO (2026-09-18). The live site at `agostonfung.com`
+> now builds from the [`astro/`](astro/) subdirectory — an Astro app — NOT
+> this Hugo root.** The Cloudflare Pages project `humanengineer` (production
+> branch `main`) has its root directory set to `astro/` and runs
+> `astro build`. See [`astro/README.md`](astro/README.md).
+>
+> **New content goes in `astro/src/content/{posts,articles,projects}/<slug>/index.md`**
+> (page bundle + co-located `cover.jpeg`); frontmatter schema lives in
+> `astro/src/content.config.ts`. Verify locally with
+> `cd astro && npm run build && npm run preview`.
+>
+> **Everything below this banner describes the OLD Hugo setup** (root
+> `content/`, `layouts/`, `themes/PaperMod`, `hugo.yaml`). It is legacy — CF
+> does not build it. Kept for reference/history only; don't use it for live
+> changes.
+
 Personal site for **Agoston Fung**, tagline *Notes on engineering, AI, and
 the people writing it*, hosted at `agostonfung.com`. Hugo static site,
 deployed on Cloudflare Pages.
